@@ -6,527 +6,255 @@
 <title>文学人格测试 — 发现你的阅读灵魂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+XiaoWei&family=Caveat:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+XiaoWei&family=Caveat:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --paper: #faf3e8;
-  --paper-dark: #f0e6d3;
-  --ink: #3d3226;
-  --ink-light: #6b5d4f;
-  --accent: #c75b39;
-  --accent-soft: #e8886a;
-  --blue: #4a7c8c;
-  --green: #5a8a6a;
-  --gold: #c49a2a;
-  --shadow-sketch: 2px 2px 0 #3d3226, 3px 3px 0 #3d3226, 1px 1px 0 #3d3226;
-  --shadow-sketch-sm: 1px 1px 0 #3d3226, 1.5px 1.5px 0 #3d3226;
+  --paper: #fdf6ec;
+  --paper-dark: #f2e4cc;
+  --ink: #2c2416;
+  --ink-mid: #5c4e3a;
+  --ink-light: #8a7b65;
+  --accent: #b8442a;
+  --accent-soft: #d4856e;
+  --gold: #b8952e;
+  --gold-light: #d4b85c;
+  --blue: #3d6b7a;
+  --green: #4a7254;
+  --cream: #fef9f0;
+  --sepia: #e8d5b0;
+  --shadow: 2px 2px 0 #2c2416, 3px 3px 0 #2c2416;
+  --shadow-sm: 1px 1px 0 #2c2416, 1.5px 1.5px 0 #2c2416;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body {
-  font-family: 'ZCOOL XiaoWei', 'STSong', 'SimSun', 'Noto Serif SC', serif;
-  background-color: #f5eee0;
+  font-family: 'Noto Serif SC','ZCOOL XiaoWei','STSong','SimSun',serif;
+  background-color:#f7f0e3;
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(180,160,130,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(200,170,120,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(160,140,110,0.08) 0%, transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.008) 2px, rgba(0,0,0,0.008) 4px);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-tap-highlight-color: transparent;
+    radial-gradient(ellipse at 30% 20%,rgba(180,150,110,0.15) 0%,transparent 60%),
+    radial-gradient(ellipse at 70% 60%,rgba(190,160,120,0.10) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 90%,rgba(160,140,100,0.08) 0%,transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:16px;
+  color:var(--ink);line-height:1.8;-webkit-tap-highlight-color:transparent;
 }
 
-.container {
-  width: 100%;
-  max-width: 520px;
-  position: relative;
-}
+.container {width:100%;max-width:560px;position:relative;padding-top:10px;}
 
-/* ===== Screen Management ===== */
-.screen { display: none; }
-.screen.active { display: block; animation: fadeSlideIn 0.5s ease; }
-
+/* Screen transitions */
+.screen {display:none;}
+.screen.active {display:block;animation:fadeSlideIn 0.6s ease;}
 @keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== Hand-drawn Card ===== */
-.sketch-card {
-  background: var(--paper);
-  border-radius: 24px 18px 28px 20px;
-  border: 2.5px solid var(--ink);
-  box-shadow: var(--shadow-sketch);
-  padding: 28px 24px;
-  position: relative;
-  overflow: visible;
+/* === CARD === */
+.card {
+  background:var(--paper);
+  border-radius:20px 16px 24px 18px;
+  border:2.5px solid var(--ink);
+  box-shadow:var(--shadow);
+  padding:28px 22px;
+  position:relative;
+  overflow:visible;
 }
-.sketch-card::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 1.5px solid var(--ink-light);
-  border-radius: 28px 22px 32px 24px;
-  pointer-events: none;
-  opacity: 0.35;
+.card::before {
+  content:'';position:absolute;inset:-5px;
+  border:1.5px solid var(--ink-light);border-radius:24px 20px 28px 22px;
+  pointer-events:none;opacity:0.3;
 }
 
-/* ===== Welcome Page ===== */
-.welcome-header {
-  text-align: center;
-  margin-bottom: 10px;
-}
-.welcome-header .doodle-icon {
-  font-size: 56px;
-  display: block;
-  margin-bottom: 4px;
-  animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-10px) rotate(3deg); }
-}
-.welcome-header h1 {
-  font-family: 'Ma Shan Zheng', 'Long Cang', 'ZCOOL XiaoWei', cursive;
-  font-size: 38px;
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.3;
-  letter-spacing: 2px;
-}
-.welcome-header h1 .accent { color: var(--accent); }
+/* === WELCOME === */
+.welcome-icon {font-size:58px;display:block;text-align:center;margin-bottom:2px;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-12px) rotate(2deg);}}
+.welcome-title {font-family:'Ma Shan Zheng','Long Cang',cursive;font-size:40px;font-weight:400;text-align:center;color:var(--ink);line-height:1.4;letter-spacing:3px;}
+.welcome-title .hl {color:var(--accent);}
+.welcome-title .sub {display:block;font-size:17px;color:var(--ink-light);letter-spacing:2px;font-family:'Caveat','Long Cang',cursive;margin-top:2px;}
 
-.squiggle-divider {
-  display: block;
-  margin: 14px auto;
-  width: 180px;
-  height: 18px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 18'%3E%3Cpath d='M5 14 Q20 3 35 14 Q50 3 65 14 Q80 3 95 14 Q110 3 125 14 Q140 3 155 14 Q170 3 175 9' fill='none' stroke='%23c75b39' stroke-width='2.5' stroke-linecap='round' /%3E%3C/svg%3E") center/contain no-repeat;
-}
+.squiggle {display:block;margin:10px auto;width:200px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16'%3E%3Cpath d='M5 12 Q18 2 30 12 Q42 2 54 12 Q66 2 78 12 Q90 2 102 12 Q114 2 126 12 Q138 2 150 12 Q162 2 174 12 Q186 2 195 8' fill='none' stroke='%23b8442a' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;}
 
-.welcome-desc {
-  text-align: center;
-  font-size: 16px;
-  color: var(--ink-light);
-  margin-bottom: 20px;
-  line-height: 1.8;
-}
+.welcome-desc {text-align:center;font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:6px;}
 
-.feature-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-.feature-tag {
-  background: #fff;
-  border: 1.5px solid var(--ink-light);
-  border-radius: 20px 12px 18px 14px;
-  padding: 6px 14px;
-  font-size: 13px;
-  color: var(--ink-light);
-  box-shadow: var(--shadow-sketch-sm);
-  transform: rotate(-1deg);
-}
-.feature-tag:nth-child(2n) { transform: rotate(1.5deg); }
-.feature-tag:nth-child(3n) { transform: rotate(-0.5deg); }
+.poem-box {background:var(--cream);border:1.5px dashed var(--sepia);border-radius:12px 16px 10px 14px;padding:14px 18px;margin:12px 0;text-align:center;font-size:14px;color:var(--ink-mid);line-height:2.2;font-style:italic;}
 
-/* ===== Sketch Button ===== */
-.btn-sketch {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  font-family: 'Ma Shan Zheng', 'Long Cang', 'ZCOOL XiaoWei', cursive;
-  font-size: 22px;
-  letter-spacing: 3px;
-  background: var(--accent);
-  color: #fff;
-  border: 2.5px solid var(--ink);
-  border-radius: 30px 20px 28px 22px;
-  box-shadow: var(--shadow-sketch);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-align: center;
-  position: relative;
-}
-.btn-sketch:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 var(--ink);
-}
-.btn-sketch.secondary {
-  background: #fff;
-  color: var(--ink);
-  font-size: 18px;
-  letter-spacing: 1px;
-}
+.feat-row {display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;}
+.feat-tag {background:#fff;border:1.5px solid var(--ink-light);border-radius:18px 10px 16px 12px;padding:5px 12px;font-size:12px;color:var(--ink-mid);box-shadow:var(--shadow-sm);transform:rotate(-1deg);}
+.feat-tag:nth-child(even){transform:rotate(1.5deg);}
+.feat-tag:nth-child(3n){transform:rotate(-0.5deg);}
 
-/* ===== Quiz Page ===== */
-.quiz-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+.btn {
+  display:block;width:100%;padding:15px;
+  font-family:'Ma Shan Zheng','Long Cang',cursive;font-size:24px;letter-spacing:4px;
+  background:var(--accent);color:#fff;border:2.5px solid var(--ink);
+  border-radius:28px 18px 26px 20px;box-shadow:var(--shadow);
+  cursor:pointer;transition:all 0.15s;text-align:center;
 }
-.quiz-progress-text {
-  font-family: 'Caveat', 'Long Cang', cursive;
-  font-size: 22px;
-  color: var(--ink-light);
+.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);}
+.btn.secondary{background:#fff;color:var(--ink);font-size:18px;letter-spacing:1px;}
+.btn:disabled{opacity:0.35;pointer-events:none;}
+
+/* === QUIZ === */
+.quiz-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.quiz-num{font-family:'Caveat','Long Cang',cursive;font-size:22px;color:var(--ink-mid);}
+.quiz-group-label{font-family:'Caveat','Long Cang',cursive;font-size:16px;color:var(--accent);}
+
+.progress-track{width:100%;height:8px;background:var(--paper-dark);border-radius:20px;border:1.5px solid var(--ink-light);margin-bottom:16px;overflow:hidden;}
+.progress-fill{height:100%;background:repeating-linear-gradient(90deg,var(--accent) 0,var(--accent) 5px,var(--accent-soft) 5px,var(--accent-soft) 7px);border-radius:20px;transition:width 0.4s;}
+
+.question-group{font-family:'Caveat','Long Cang',cursive;font-size:15px;color:var(--accent);margin-bottom:2px;opacity:0.8;}
+.question-text{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:14px;line-height:1.7;}
+
+.options{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;padding:14px 15px;
+  background:#fff;border:2px solid var(--ink-light);border-radius:12px 16px 14px 10px;
+  box-shadow:1.5px 1.5px 0 var(--ink-light);cursor:pointer;
+  transition:all 0.12s;text-align:left;font-family:inherit;font-size:15px;
+  color:var(--ink);line-height:1.6;transform:rotate(0.1deg);
 }
-.progress-track {
-  width: 100%;
-  height: 10px;
-  background: var(--paper-dark);
-  border-radius: 20px;
-  border: 1.5px solid var(--ink-light);
-  margin-bottom: 20px;
-  overflow: hidden;
-  position: relative;
+.opt:nth-child(even){transform:rotate(-0.2deg);}
+.opt:active{transform:translate(1px,1px) rotate(0)!important;box-shadow:0.5px 0.5px 0 var(--ink-light);}
+.opt.selected{border-color:var(--accent);background:#fef7f3;box-shadow:2px 2px 0 var(--accent);}
+.opt-letter{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:2px solid var(--ink-light);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;
+  font-family:'Caveat',cursive;background:#fff;}
+.opt.selected .opt-letter{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+.quiz-nav{display:flex;gap:10px;}
+.quiz-nav .btn{flex:1;font-size:18px;letter-spacing:1px;}
+
+/* === RESULTS === */
+.result-header{text-align:center;margin-bottom:8px;}
+.result-icon{font-size:70px;display:block;margin-bottom:4px;animation:float 2.5s ease-in-out infinite;}
+.result-name{font-family:'Ma Shan Zheng','Long Cang',cursive;font-size:36px;color:var(--ink);letter-spacing:4px;line-height:1.3;}
+.result-subtitle{font-size:14px;color:var(--ink-light);margin-top:1px;}
+
+.match-box{text-align:center;margin:12px 0 16px;}
+.match-track{width:100%;height:14px;background:var(--paper-dark);border-radius:20px;border:1.5px solid var(--ink-light);overflow:hidden;}
+.match-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:20px;transition:width 1s ease 0.3s;}
+
+.section-title{font-family:'Caveat','Long Cang',cursive;font-size:22px;color:var(--ink);margin:18px 0 6px;
+  padding-bottom:4px;border-bottom:2px dashed var(--paper-dark);letter-spacing:1px;}
+.section-title .emoji{font-style:normal;}
+
+.analysis-block p{font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:6px;}
+
+.portrait-box{
+  background:var(--cream);border:2px solid var(--sepia);border-radius:14px 18px 12px 16px;
+  padding:16px 18px;margin:10px 0;font-size:15px;color:var(--ink-mid);line-height:2.2;
+  font-style:italic;position:relative;
 }
-.progress-fill {
-  height: 100%;
-  background: repeating-linear-gradient(90deg, var(--accent) 0px, var(--accent) 6px, var(--accent-soft) 6px, var(--accent-soft) 8px);
-  border-radius: 20px;
-  transition: width 0.4s ease;
-}
-.progress-fill::after {
-  content: '';
-  position: absolute;
-  right: -3px;
-  top: -3px;
-  width: 16px;
-  height: 16px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 2px solid var(--ink);
+.portrait-box::before{content:'\201C';position:absolute;top:-10px;left:10px;font-size:40px;color:var(--accent-soft);font-family:serif;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0;}
+.tag{background:#fff;border:1.5px solid var(--ink-light);border-radius:14px 8px 12px 10px;padding:3px 10px;font-size:12px;color:var(--ink-mid);transform:rotate(-1deg);}
+.tag:nth-child(even){transform:rotate(1deg);}
+
+.book-list{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 10px;}
+.book{background:var(--paper-dark);border-radius:8px 12px 7px 10px;padding:4px 10px;font-size:13px;color:var(--ink);border:1px solid var(--ink-light);}
+
+.author-list{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0;}
+.author-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-mid);}
+
+.radar-section{margin:12px 0;text-align:center;}
+.radar-section .section-title{margin-bottom:10px;}
+
+.result-actions{display:flex;gap:10px;margin-top:20px;}
+.result-actions .btn{flex:1;}
+
+/* === Doodle corner === */
+.doodle{position:absolute;width:36px;height:36px;pointer-events:none;opacity:0.45;}
+.doodle.tl{top:-6px;left:-6px;}
+.doodle.br{bottom:-6px;right:-6px;transform:rotate(180deg);}
+
+/* Responsive */
+@media(max-width:420px){
+  .card{padding:20px 14px;}
+  .welcome-title{font-size:32px;}
+  .question-text{font-size:16px;}
+  .opt{padding:12px 13px;font-size:14px;}
+  .result-name{font-size:28px;}
 }
 
-.question-group-label {
-  font-family: 'Caveat', 'Long Cang', cursive;
-  font-size: 18px;
-  color: var(--accent);
-  margin-bottom: 4px;
-  letter-spacing: 1px;
-}
-.question-text {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 18px;
-  line-height: 1.6;
-}
-
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-.option-btn {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 16px;
-  background: #fff;
-  border: 2px solid var(--ink-light);
-  border-radius: 14px 18px 16px 12px;
-  box-shadow: 1.5px 1.5px 0 var(--ink-light);
-  cursor: pointer;
-  transition: all 0.12s ease;
-  text-align: left;
-  font-family: inherit;
-  font-size: 15px;
-  color: var(--ink);
-  line-height: 1.6;
-  position: relative;
-  transform: rotate(0.2deg);
-}
-.option-btn:nth-child(2n) { transform: rotate(-0.3deg); }
-.option-btn:nth-child(3n) { transform: rotate(0.1deg); }
-.option-btn:active {
-  transform: translate(1px, 1px) rotate(0deg) !important;
-  box-shadow: 0.5px 0.5px 0 var(--ink-light);
-}
-.option-btn.selected {
-  border-color: var(--accent);
-  background: #fef7f3;
-  box-shadow: 2px 2px 0 var(--accent);
-}
-.option-letter {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid var(--ink-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: 'Caveat', cursive;
-  background: #fff;
-}
-.option-btn.selected .option-letter {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.quiz-nav {
-  display: flex;
-  gap: 10px;
-}
-.quiz-nav .btn-sketch {
-  flex: 1;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-.quiz-nav .btn-sketch:disabled {
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-/* ===== Results Page ===== */
-.results-header {
-  text-align: center;
-  margin-bottom: 14px;
-}
-.results-type-icon {
-  font-size: 64px;
-  display: block;
-  margin-bottom: 6px;
-  animation: float 2.5s ease-in-out infinite;
-}
-.results-type-name {
-  font-family: 'Ma Shan Zheng', 'Long Cang', 'ZCOOL XiaoWei', cursive;
-  font-size: 34px;
-  color: var(--ink);
-  letter-spacing: 3px;
-  line-height: 1.3;
-}
-.results-subtitle {
-  font-size: 14px;
-  color: var(--ink-light);
-  margin-top: 2px;
-}
-
-.results-match {
-  text-align: center;
-  margin: 10px 0 18px;
-}
-.match-bar-track {
-  width: 100%;
-  height: 14px;
-  background: var(--paper-dark);
-  border-radius: 20px;
-  border: 1.5px solid var(--ink-light);
-  overflow: hidden;
-}
-.match-bar-fill {
-  height: 100%;
-  background: var(--gold);
-  border-radius: 20px;
-  transition: width 1s ease 0.3s;
-}
-
-/* ===== Radar Chart ===== */
-.radar-section {
-  margin: 18px 0;
-}
-.radar-section h3 {
-  text-align: center;
-  font-family: 'Caveat', 'Long Cang', cursive;
-  font-size: 22px;
-  margin-bottom: 8px;
-  color: var(--blue);
-  letter-spacing: 2px;
-}
-.radar-container {
-  display: flex;
-  justify-content: center;
-}
-
-/* ===== Analysis Sections ===== */
-.analysis-block {
-  margin-top: 16px;
-}
-.analysis-block h3 {
-  font-family: 'Caveat', 'Long Cang', cursive;
-  font-size: 22px;
-  color: var(--ink);
-  margin-bottom: 6px;
-  padding-bottom: 4px;
-  border-bottom: 2px dashed var(--paper-dark);
-  letter-spacing: 1px;
-}
-.analysis-block p {
-  font-size: 15px;
-  color: var(--ink-light);
-  line-height: 1.8;
-  margin-bottom: 8px;
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 8px 0;
-}
-.tag {
-  background: #fff;
-  border: 1.5px solid var(--ink-light);
-  border-radius: 16px 10px 14px 12px;
-  padding: 4px 12px;
-  font-size: 13px;
-  color: var(--ink-light);
-  transform: rotate(-1deg);
-}
-.tag:nth-child(2n) { transform: rotate(1deg); }
-
-.book-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 6px 0 12px;
-}
-.book-item {
-  background: var(--paper-dark);
-  border-radius: 10px 14px 8px 12px;
-  padding: 5px 12px;
-  font-size: 13px;
-  color: var(--ink);
-  border: 1px solid var(--ink-light);
-}
-
-.results-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-.results-actions .btn-sketch {
-  flex: 1;
-}
-
-/* ===== Doodle Decorations ===== */
-.doodle-corner {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  opacity: 0.5;
-}
-.doodle-corner.tl { top: -8px; left: -8px; }
-.doodle-corner.br { bottom: -8px; right: -8px; transform: rotate(180deg); }
-
-/* ===== Ink Splat ===== */
-.ink-splat {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.06;
-  width: 120px;
-  height: 120px;
-  border-radius: 60% 40% 55% 45%;
-  background: var(--ink);
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 400px) {
-  .sketch-card { padding: 20px 16px; }
-  .welcome-header h1 { font-size: 30px; }
-  .question-text { font-size: 17px; }
-  .option-btn { padding: 12px 14px; font-size: 14px; }
-  .results-type-name { font-size: 28px; }
-}
-
-/* ===== Hidden utility ===== */
-.hidden { display: none !important; }
+.hidden{display:none!important;}
 </style>
 </head>
 <body>
 
 <div class="container">
 
-  <!-- ==================== WELCOME SCREEN ==================== -->
-  <div class="screen active" id="screen-welcome">
-    <div class="sketch-card" style="text-align:center;">
-      <div class="welcome-header">
-        <span class="doodle-icon">📖</span>
-        <h1>发现你的<br><span class="accent">文学人格</span></h1>
+  <!-- ====== WELCOME ====== -->
+  <div class="screen active" id="welcome">
+    <div class="card" style="text-align:center;">
+      <span class="welcome-icon">📜</span>
+      <h1 class="welcome-title">发现你的<br><span class="hl">文学人格</span><span class="sub">Literary Soul Discovery</span></h1>
+      <div class="squiggle"></div>
+      <div class="poem-box">
+        "你读过的每一本书<br>都是你灵魂的一块拼图"<br>
+        <span style="font-size:12px;opacity:0.6;">—— 博尔赫斯</span>
       </div>
-      <div class="squiggle-divider"></div>
       <p class="welcome-desc">
-        30 道精心设计的问题<br>
-        探索你独特的阅读灵魂<br>
-        获取专属文学分析与书单推荐
+        一百道精心设计的文学问题<br>
+        十个维度的深度剖析<br>
+        八种文学人格原型<br>
+        一份属于你的灵魂阅读报告
       </p>
-      <div class="feature-list">
-        <span class="feature-tag">📝 30题深度探索</span>
-        <span class="feature-tag">🎭 8种文学人格</span>
-        <span class="feature-tag">📊 五维雷达分析</span>
-        <span class="feature-tag">📚 个性书单推荐</span>
+      <div class="feat-row">
+        <span class="feat-tag">📝 100题</span>
+        <span class="feat-tag">🎭 8种人格</span>
+        <span class="feat-tag">📊 五维雷达</span>
+        <span class="feat-tag">📚 专属书单</span>
+        <span class="feat-tag">🖋️ 作家知音</span>
+        <span class="feat-tag">🌿 灵魂画像</span>
       </div>
-      <button class="btn-sketch" onclick="startQuiz()">
-        ✦ 开始测试 ✦
-      </button>
-      <p style="margin-top:12px;font-size:12px;color:var(--ink-light);opacity:0.7;">
-        预计需要 5-8 分钟 · 请凭直觉作答
-      </p>
-      <svg class="doodle-corner tl" viewBox="0 0 40 40"><path d="M4 12 Q8 4 18 6 Q12 10 10 18 Q8 12 4 12Z" fill="none" stroke="#3d3226" stroke-width="1.5"/></svg>
-      <svg class="doodle-corner br" viewBox="0 0 40 40"><path d="M4 12 Q8 4 18 6 Q12 10 10 18 Q8 12 4 12Z" fill="none" stroke="#3d3226" stroke-width="1.5"/></svg>
+      <button class="btn" onclick="startQuiz()">✦ 开启探索 ✦</button>
+      <p style="margin-top:10px;font-size:11px;color:var(--ink-light);opacity:0.7;">预计需要 12-18 分钟 · 请凭直觉作答</p>
+      <svg class="doodle tl" viewBox="0 0 36 36"><path d="M3 10 Q7 3 15 5 Q10 9 8 16 Q6 10 3 10Z" fill="none" stroke="#2c2416" stroke-width="1.5"/></svg>
+      <svg class="doodle br" viewBox="0 0 36 36"><path d="M3 10 Q7 3 15 5 Q10 9 8 16 Q6 10 3 10Z" fill="none" stroke="#2c2416" stroke-width="1.5"/></svg>
     </div>
   </div>
 
-  <!-- ==================== QUIZ SCREEN ==================== -->
-  <div class="screen" id="screen-quiz">
-    <div class="sketch-card">
-      <div class="quiz-header">
-        <span class="quiz-progress-text" id="quiz-progress">第 1 / 30 题</span>
-        <span class="quiz-progress-text" id="quiz-group"></span>
+  <!-- ====== QUIZ ====== -->
+  <div class="screen" id="quiz">
+    <div class="card">
+      <div class="quiz-top">
+        <span class="quiz-num" id="qnum"></span>
+        <span class="quiz-group-label" id="qgroup"></span>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-      </div>
-      <div class="question-group-label" id="question-group-label"></div>
-      <div class="question-text" id="question-text"></div>
-      <div class="options-list" id="options-list"></div>
+      <div class="progress-track"><div class="progress-fill" id="pfill" style="width:0%"></div></div>
+      <div class="question-group" id="qglabel"></div>
+      <div class="question-text" id="qtext"></div>
+      <div class="options" id="opts"></div>
       <div class="quiz-nav">
-        <button class="btn-sketch secondary" id="btn-prev" onclick="prevQuestion()">← 上一题</button>
-        <button class="btn-sketch" id="btn-next" onclick="nextQuestion()" disabled>下一题 →</button>
+        <button class="btn secondary" id="prev" onclick="prevQ()">← 上一题</button>
+        <button class="btn" id="next" onclick="nextQ()" disabled>下一题 →</button>
       </div>
     </div>
   </div>
 
-  <!-- ==================== RESULTS SCREEN ==================== -->
-  <div class="screen" id="screen-results">
-    <div class="sketch-card">
-      <div class="results-header">
-        <span class="results-type-icon" id="result-icon"></span>
-        <div class="results-type-name" id="result-name"></div>
-        <div class="results-subtitle" id="result-subtitle"></div>
+  <!-- ====== RESULTS ====== -->
+  <div class="screen" id="results">
+    <div class="card">
+      <div class="result-header">
+        <span class="result-icon" id="ricon"></span>
+        <div class="result-name" id="rname"></div>
+        <div class="result-subtitle" id="rsub"></div>
       </div>
-      <div class="squiggle-divider"></div>
-      <div class="results-match">
-        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--ink-light);margin-bottom:4px;">
-          <span>匹配度</span><span id="match-percent">0%</span>
-        </div>
-        <div class="match-bar-track"><div class="match-bar-fill" id="match-bar" style="width:0%"></div></div>
+      <div class="squiggle"></div>
+      <div class="match-box">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ink-light);margin-bottom:2px;"><span>人格匹配度</span><span id="mpct">0%</span></div>
+        <div class="match-track"><div class="match-fill" id="mbar" style="width:0%"></div></div>
       </div>
       <div class="radar-section">
-        <h3>📊 五维雷达图</h3>
-        <div class="radar-container">
-          <svg id="radar-chart" viewBox="-130 -130 260 260" width="260" height="260"></svg>
-        </div>
+        <div class="section-title">📊 五维文学雷达</div>
+        <svg id="radar" viewBox="-120 -120 240 240" width="240" height="240" style="max-width:100%;"></svg>
       </div>
-      <div class="analysis-block" id="analysis-content"></div>
-      <div class="results-actions">
-        <button class="btn-sketch secondary" onclick="restartQuiz()">🔄 重新测试</button>
-        <button class="btn-sketch" id="btn-share" onclick="shareResult()">📤 分享结果</button>
+      <div id="analysis"></div>
+      <div class="result-actions">
+        <button class="btn secondary" onclick="restartQuiz()">🔄 重新测试</button>
+        <button class="btn" onclick="shareResult()">📤 分享报告</button>
       </div>
     </div>
   </div>
@@ -534,546 +262,795 @@ body {
 </div>
 
 <script>
-// ==================== DATA ====================
+// ==================== DATA: 100 QUESTIONS ====================
+// Tags: E=Emotional R=Rational T=Traditional Iv=Innovative I=Introspective Ex=Extroverted Se=Serious L=Light A=Abstract C=Concrete
+const Q = [
+  // Group 1: 阅读偏好 Reading Preferences (Q1-10)
+  {g:'阅读偏好',t:'走进一家独立书店，你最先被什么吸引？',o:[
+    {l:'A',x:'精美的封面设计和独特的装帧质感',s:['E','C']},
+    {l:'B',x:'书架上整齐排列的经典名著专区',s:['T','Se']},
+    {l:'C',x:'新书推荐台上风格前卫的实验性作品',s:['Iv','A']},
+    {l:'D',x:'角落里安静专注的阅读氛围和光影',s:['I','Se']}]},
+  {g:'阅读偏好',t:'选择一本书时，你最看重的因素是？',o:[
+    {l:'A',x:'能否触动内心，引发深层的情感共鸣',s:['E','I']},
+    {l:'B',x:'是否有独到的思想见解和智性启发',s:['R','A']},
+    {l:'C',x:'故事是否精彩绝伦，让人欲罢不能',s:['Ex','C']},
+    {l:'D',x:'文笔是否优美独特，具有文学质感',s:['Iv','A']}]},
+  {g:'阅读偏好',t:'你更偏爱哪种文学体量？',o:[
+    {l:'A',x:'诗歌或短篇散文——短小精炼，余韵悠长',s:['E','A']},
+    {l:'B',x:'中篇小说——结构完整又不至冗长',s:['R','C']},
+    {l:'C',x:'长篇小说——享受深度的沉浸式阅读体验',s:['Ex','C']},
+    {l:'D',x:'系列作品——在同一个世界里长久停留',s:['Ex','L']}]},
+  {g:'阅读偏好',t:'阅读时，你最喜欢的空间是？',o:[
+    {l:'A',x:'独处的书房或卧室——绝对的安静与私密',s:['I','Se']},
+    {l:'B',x:'咖啡馆或公园长椅——有人间烟火气的背景音',s:['Ex','L']},
+    {l:'C',x:'图书馆或书店——被千万本书包围的安全感',s:['T','Se']},
+    {l:'D',x:'随时随地——地铁上、排队中，碎片即阅读',s:['L','C']}]},
+  {g:'阅读偏好',t:'哪种书最可能让你熬夜到凌晨？',o:[
+    {l:'A',x:'情感汹涌、令人心碎又心动的爱情故事',s:['E','Ex']},
+    {l:'B',x:'层层反转、让人不断猜测的悬疑推理小说',s:['R','Ex']},
+    {l:'C',x:'颠覆认知、每页都在挑战思维的哲学随笔',s:['A','I']},
+    {l:'D',x:'幽默温暖、让人不断会心一笑的生活散文',s:['L','C']}]},
+  {g:'阅读偏好',t:'你更偏好哪种文学体裁？',o:[
+    {l:'A',x:'诗歌——语言的极致凝练与音乐性',s:['E','A']},
+    {l:'B',x:'小说——完整的故事世界与人物命运',s:['Ex','C']},
+    {l:'C',x:'散文随笔——自由流淌的思想与情感',s:['I','E']},
+    {l:'D',x:'戏剧对话——语言的交锋与张力',s:['R','Se']}]},
+  {g:'阅读偏好',t:'你对"非虚构文学"的态度是？',o:[
+    {l:'A',x:'非常喜欢——真实的故事最有力量',s:['C','Se']},
+    {l:'B',x:'偶有涉猎——好的非虚构可以比小说更精彩',s:['R','Ex']},
+    {l:'C',x:'一般——我更偏爱虚构世界的无限可能',s:['A','Iv']},
+    {l:'D',x:'看作者——关键是谁在讲，而非讲什么',s:['I','T']}]},
+  {g:'阅读偏好',t:'选择外国文学译本时，你最在意？',o:[
+    {l:'A',x:'译文的语言美感和文学性',s:['E','A']},
+    {l:'B',x:'对原作的忠实度和准确性',s:['R','T']},
+    {l:'C',x:'译者的个人风格和再创作',s:['Iv','I']},
+    {l:'D',x:'阅读的流畅度和可读性',s:['L','C']}]},
+  {g:'阅读偏好',t:'你更喜欢阅读哪个时代的作品？',o:[
+    {l:'A',x:'古典时代——经过时间检验的永恒经典',s:['T','Se']},
+    {l:'B',x:'现代主义——二十世纪的思想与形式革命',s:['A','Iv']},
+    {l:'C',x:'当代作品——与当下生活息息相关的书写',s:['Ex','C']},
+    {l:'D',x:'不拘时代——好书不分古今',s:['L','R']}]},
+  {g:'阅读偏好',t:'一本书的推荐来源，你最信任？',o:[
+    {l:'A',x:'知心好友的热情推荐',s:['Ex','E']},
+    {l:'B',x:'专业书评人或文学批评家的分析',s:['R','Se']},
+    {l:'C',x:'自己在书店或图书馆的偶遇',s:['I','T']},
+    {l:'D',x:'社交媒体上陌生读者的真情实感',s:['L','Iv']}]},
 
-// 5 Dimensions: Emotional(E)-Rational(R) / Traditional(T)-Innovative(Iv) / Introspective(I)-Extroverted(Ex) / Serious(Se)-Light(L) / Abstract(A)-Concrete(C)
-// Each option tagged with up to 2 dimensions → +1 point on that side
+  // Group 2: 文学品味 Literary Taste (Q11-20)
+  {g:'文学品味',t:'你更欣赏哪种文学语言风格？',o:[
+    {l:'A',x:'华丽繁复，修辞丰沛如交响乐',s:['E','A']},
+    {l:'B',x:'简洁精准，一语中的如手术刀',s:['R','C']},
+    {l:'C',x:'含蓄蕴藉，意在言外如中国水墨',s:['T','I']},
+    {l:'D',x:'奇崛险怪，打破常规如现代艺术',s:['Iv','A']}]},
+  {g:'文学品味',t:'一部作品的结局，你更偏爱？',o:[
+    {l:'A',x:'圆满温暖的 Happy Ending——给人希望',s:['E','L']},
+    {l:'B',x:'开放式的留白——让读者继续思考和想象',s:['I','A']},
+    {l:'C',x:'悲剧收尾——真实而有力量，令人久久不忘',s:['Se','R']},
+    {l:'D',x:'完全意想不到的神级反转——颠覆所有预设',s:['Ex','Iv']}]},
+  {g:'文学品味',t:'对于公认"难读"的文学作品，你的态度是？',o:[
+    {l:'A',x:'享受挑战——越难读的作品往往越有味道',s:['A','Se']},
+    {l:'B',x:'若思想深刻则愿意花时间啃——难度不是问题',s:['R','T']},
+    {l:'C',x:'不必为难自己——阅读首先应该是一种享受',s:['L','E']},
+    {l:'D',x:'欣赏其探索精神——形式本身就是内容的一部分',s:['Iv','A']}]},
+  {g:'文学品味',t:'评价一部作品时，你最在意哪个维度？',o:[
+    {l:'A',x:'情感的深度——有没有真正打动我',s:['E','I']},
+    {l:'B',x:'思想的锐度——有没有让我重新思考',s:['R','Se']},
+    {l:'C',x:'叙事的技术——讲故事的技巧和结构',s:['Iv','Ex']},
+    {l:'D',x:'语言的美感——文字本身的质感和韵律',s:['A','E']}]},
+  {g:'文学品味',t:'以下哪种开篇方式最吸引你？',o:[
+    {l:'A',x:'"那是最美好的时代，那是最糟糕的时代……"',s:['T','Se']},
+    {l:'B',x:'"今天，妈妈死了。也许是昨天，我不知道。"',s:['R','I']},
+    {l:'C',x:'"多年以后，面对行刑队，奥雷里亚诺·布恩迪亚上校将会回想起……"',s:['A','Iv']},
+    {l:'D',x:'"幸福的家庭都是相似的，不幸的家庭各有各的不幸。"',s:['T','R']}]},
+  {g:'文学品味',t:'你更喜欢哪种叙述视角？',o:[
+    {l:'A',x:'第一人称——亲密、主观，直接进入人物内心',s:['E','I']},
+    {l:'B',x:'第三人称全知——上帝视角，俯瞰整个故事世界',s:['R','A']},
+    {l:'C',x:'多视角切换——每个角色都有自己的声音',s:['Ex','Iv']},
+    {l:'D',x:'不可靠叙述者——挑战读者判断的叙事游戏',s:['Iv','A']}]},
+  {g:'文学品味',t:'对你来说，一部作品的"文学性"主要体现在？',o:[
+    {l:'A',x:'语言的质感和美学的密度',s:['A','E']},
+    {l:'B',x:'对人性和社会的深刻洞察',s:['R','Se']},
+    {l:'C',x:'叙事结构和形式的创新',s:['Iv','A']},
+    {l:'D',x:'情感的真挚和生命的温度',s:['E','C']}]},
+  {g:'文学品味',t:'你如何看待文学中的"留白"？',o:[
+    {l:'A',x:'大美无言——最好的文字往往在沉默之处',s:['I','A']},
+    {l:'B',x:'适可而止——留白是一种高级的叙事技巧',s:['R','T']},
+    {l:'C',x:'看情况——过多的留白会让人困惑',s:['C','L']},
+    {l:'D',x:'不太在意——我更关注文本已有的内容',s:['Ex','C']}]},
+  {g:'文学品味',t:'你认为"好文笔"最重要的标准是？',o:[
+    {l:'A',x:'准确——用最恰当的词表达最精确的意思',s:['R','C']},
+    {l:'B',x:'美感——文字本身就有独立于内容的审美价值',s:['A','E']},
+    {l:'C',x:'个性——有辨识度的声音，读一句就知道是谁写的',s:['Iv','I']},
+    {l:'D',x:'自然——不露痕迹，让读者忘了文字的存在',s:['L','C']}]},
+  {g:'文学品味',t:'你对文学中"金句"的态度是？',o:[
+    {l:'A',x:'很喜欢——好的金句像一颗浓缩的宝石',s:['E','A']},
+    {l:'B',x:'谨慎欣赏——过于漂亮的话有时是思想的陷阱',s:['R','Se']},
+    {l:'C',x:'无所谓——我更看重整体的阅读体验',s:['L','C']},
+    {l:'D',x:'看语境——脱离了上下文的金句没有意义',s:['T','I']}]},
 
-const QUESTIONS = [
-  // Group 1: 阅读偏好 (Q1-5)
-  { group:'阅读偏好', text:'走进一家书店，你最先被什么吸引？', options:[
-    {letter:'A',text:'精美的封面和独特的装帧设计',tags:['E','C']},
-    {letter:'B',text:'书架上排列整齐的经典名著区',tags:['T','Se']},
-    {letter:'C',text:'新书推荐台上风格前卫的实验性作品',tags:['Iv','A']},
-    {letter:'D',text:'角落里安静专注的阅读氛围',tags:['I','Se']}
-  ]},
-  { group:'阅读偏好', text:'选择一本书时，你最看重？', options:[
-    {letter:'A',text:'能否触动内心、引发情感共鸣',tags:['E','I']},
-    {letter:'B',text:'是否有深刻的思想和独到的见解',tags:['R','A']},
-    {letter:'C',text:'故事是否精彩、让人欲罢不能',tags:['Ex','C']},
-    {letter:'D',text:'文笔是否优美、风格是否独特',tags:['Iv','A']}
-  ]},
-  { group:'阅读偏好', text:'你更偏爱哪种阅读体量？', options:[
-    {letter:'A',text:'诗歌或短篇散文，短小精炼有余韵',tags:['E','A']},
-    {letter:'B',text:'中篇小说，结构完整又不冗长',tags:['R','C']},
-    {letter:'C',text:'长篇小说，享受深度沉浸式体验',tags:['Ex','C']},
-    {letter:'D',text:'系列作品，在一个世界里长久停留',tags:['Ex','L']}
-  ]},
-  { group:'阅读偏好', text:'阅读时，你最喜欢的环境是？', options:[
-    {letter:'A',text:'独处书房，安静无人打扰',tags:['I','Se']},
-    {letter:'B',text:'咖啡馆或公园，有人间烟火气',tags:['Ex','L']},
-    {letter:'C',text:'图书馆或书店，被书香包围',tags:['T','Se']},
-    {letter:'D',text:'随时随地，碎片时间即可阅读',tags:['L','C']}
-  ]},
-  { group:'阅读偏好', text:'哪种书更可能让你"熬夜读完"？', options:[
-    {letter:'A',text:'情感充沛、令人揪心的爱情故事',tags:['E','Ex']},
-    {letter:'B',text:'层层反转、烧脑的悬疑推理小说',tags:['R','Ex']},
-    {letter:'C',text:'颠覆认知、引人深思的哲学随笔',tags:['A','I']},
-    {letter:'D',text:'幽默风趣、让人会心一笑的生活散文',tags:['L','C']}
-  ]},
-  // Group 2: 文学品味 (Q6-10)
-  { group:'文学品味', text:'你更欣赏哪种文学风格？', options:[
-    {letter:'A',text:'华丽优美，修辞丰富如诗如画',tags:['E','A']},
-    {letter:'B',text:'简洁有力，一语中的直指人心',tags:['R','C']},
-    {letter:'C',text:'含蓄内敛，留白之处余韵悠长',tags:['T','I']},
-    {letter:'D',text:'先锋实验，打破一切常规写法',tags:['Iv','A']}
-  ]},
-  { group:'文学品味', text:'一部作品的结局，你更偏好？', options:[
-    {letter:'A',text:'圆满温暖的 Happy Ending',tags:['E','L']},
-    {letter:'B',text:'留白的开放式结局，让人回味',tags:['I','A']},
-    {letter:'C',text:'悲剧收尾，真实而更具震撼力',tags:['Se','R']},
-    {letter:'D',text:'完全出乎意料的神级反转',tags:['Ex','Iv']}
-  ]},
-  { group:'文学品味', text:'对于公认"难读"的文学作品，你的态度是？', options:[
-    {letter:'A',text:'享受挑战，越难读越有味道',tags:['A','Se']},
-    {letter:'B',text:'如果思想深刻，愿意花时间啃',tags:['R','T']},
-    {letter:'C',text:'不必为难自己，阅读首先是享受',tags:['L','E']},
-    {letter:'D',text:'欣赏其探索精神，不必全部理解',tags:['Iv','A']}
-  ]},
-  { group:'文学品味', text:'评价一部作品时，你最在意？', options:[
-    {letter:'A',text:'情感的真挚度和感染力',tags:['E','I']},
-    {letter:'B',text:'思想的深度和批判性',tags:['R','Se']},
-    {letter:'C',text:'叙事的技巧和结构的精妙',tags:['Iv','Ex']},
-    {letter:'D',text:'语言的美感和文字的质感',tags:['E','A']}
-  ]},
-  { group:'文学品味', text:'以下哪类开篇最吸引你？', options:[
-    {letter:'A',text:'"那是最美好的时代，那是最糟糕的时代……"',tags:['T','Se']},
-    {letter:'B',text:'"今天，妈妈死了。也许是昨天，我不知道。"',tags:['R','I']},
-    {letter:'C',text:'"多年以后，面对行刑队……"',tags:['A','Iv']},
-    {letter:'D',text:'"幸福的家庭都是相似的……"',tags:['T','R']}
-  ]},
-  // Group 3: 阅读习惯 (Q11-15)
-  { group:'阅读习惯', text:'阅读时，你通常会？', options:[
-    {letter:'A',text:'拿笔在书上做标记、划线和批注',tags:['R','Se']},
-    {letter:'B',text:'彻底沉浸其中，忘记周遭一切',tags:['E','I']},
-    {letter:'C',text:'读到精彩处想立刻分享给朋友',tags:['Ex','L']},
-    {letter:'D',text:'读完后认真整理笔记或写书评',tags:['R','I']}
-  ]},
-  { group:'阅读习惯', text:'遇到读不下去的书，你会？', options:[
-    {letter:'A',text:'坚持读完，说不定后面有惊喜',tags:['Se','T']},
-    {letter:'B',text:'果断放弃，时间留给更好的书',tags:['L','Ex']},
-    {letter:'C',text:'跳着看看，快速浏览有无亮点',tags:['Iv','L']},
-    {letter:'D',text:'停下来思考为什么读不下去',tags:['R','I']}
-  ]},
-  { group:'阅读习惯', text:'你重读一本书的频率是？', options:[
-    {letter:'A',text:'经常重读，每遍都有新发现的宝藏',tags:['I','T']},
-    {letter:'B',text:'偶尔重读那几本特别钟爱的',tags:['E','Se']},
-    {letter:'C',text:'很少重读，新书都读不过来了',tags:['Ex','L']},
-    {letter:'D',text:'只重读有深度的作品，常读常新',tags:['R','A']}
-  ]},
-  { group:'阅读习惯', text:'你对"剧透"的态度是？', options:[
-    {letter:'A',text:'绝对不能剧透！破坏阅读体验',tags:['Ex','E']},
-    {letter:'B',text:'无所谓，重要的是"怎么写"而非"写什么"',tags:['R','A']},
-    {letter:'C',text:'有时先知道结局反而能注意到更多细节',tags:['Iv','L']},
-    {letter:'D',text:'看情况，不同类型作品感受不同',tags:['Se','I']}
-  ]},
-  { group:'阅读习惯', text:'读书时你的注意力更多放在？', options:[
-    {letter:'A',text:'人物的内心世界和情感变化',tags:['E','I']},
-    {letter:'B',text:'情节的推进和悬念的铺设',tags:['Ex','C']},
-    {letter:'C',text:'语言的节奏和文字的美感',tags:['A','E']},
-    {letter:'D',text:'主题的深度和思想的力量',tags:['R','Se']}
-  ]},
-  // Group 4: 角色共鸣 (Q16-20)
-  { group:'角色共鸣', text:'最吸引你的文学角色类型是？', options:[
-    {letter:'A',text:'敏感细腻、内心世界丰富的人',tags:['E','I']},
-    {letter:'B',text:'勇敢冒险、不断探索未知的人',tags:['Ex','C']},
-    {letter:'C',text:'智慧深沉、洞察世事的智者',tags:['R','Se']},
-    {letter:'D',text:'特立独行、不按常理出牌的怪才',tags:['Iv','A']}
-  ]},
-  { group:'角色共鸣', text:'对于"不完美"的主角，你的看法是？', options:[
-    {letter:'A',text:'有缺陷的角色更真实、更迷人',tags:['R','Se']},
-    {letter:'B',text:'更喜欢理想化的角色，给人希望',tags:['E','L']},
-    {letter:'C',text:'关键不在完不完美，而在塑造成不成功',tags:['I','C']},
-    {letter:'D',text:'角色为人设服务，故事好就行',tags:['Ex','L']}
-  ]},
-  { group:'角色共鸣', text:'阅读时你更容易？', options:[
-    {letter:'A',text:'代入主角，与人物同悲同喜',tags:['E','Ex']},
-    {letter:'B',text:'保持距离，冷静观察和分析角色',tags:['R','I']},
-    {letter:'C',text:'关注角色之间的互动和关系网络',tags:['Ex','C']},
-    {letter:'D',text:'思考角色背后的象征和隐喻意义',tags:['A','Se']}
-  ]},
-  { group:'角色共鸣', text:'哪种角色的成长弧光最打动你？', options:[
-    {letter:'A',text:'从脆弱到勇敢的自我治愈之旅',tags:['E','L']},
-    {letter:'B',text:'从蒙昧到觉醒的思想蜕变之旅',tags:['R','A']},
-    {letter:'C',text:'从束缚到解放的个性突围之旅',tags:['Iv','Ex']},
-    {letter:'D',text:'从迷失到找到意义的灵魂追寻之旅',tags:['I','T']}
-  ]},
-  { group:'角色共鸣', text:'如果进入一本书的世界，你想成为？', options:[
-    {letter:'A',text:'故事的讲述者，用声音赋予文字生命',tags:['I','A']},
-    {letter:'B',text:'主角的知心伙伴，陪伴见证一切',tags:['E','Ex']},
-    {letter:'C',text:'冷眼旁观的智者，默默洞察全局',tags:['R','Se']},
-    {letter:'D',text:'神秘的过客，不经意间改变故事走向',tags:['Iv','L']}
-  ]},
-  // Group 5: 创作倾向 (Q21-25)
-  { group:'创作倾向', text:'如果要自己写作，你更可能写？', options:[
-    {letter:'A',text:'诗歌或散文，抒发内心',tags:['E','A']},
-    {letter:'B',text:'小说或故事，构建一个世界',tags:['Ex','C']},
-    {letter:'C',text:'评论或杂文，表达观点',tags:['R','Se']},
-    {letter:'D',text:'不拘形式的实验性文体',tags:['Iv','A']}
-  ]},
-  { group:'创作倾向', text:'你在写作中最重视什么？', options:[
-    {letter:'A',text:'情感的真挚自然的表达',tags:['E','I']},
-    {letter:'B',text:'结构的精巧和逻辑的自洽',tags:['R','Iv']},
-    {letter:'C',text:'人物的鲜活和故事的生动',tags:['Ex','C']},
-    {letter:'D',text:'思想的独特和观点的深刻',tags:['A','Se']}
-  ]},
-  { group:'创作倾向', text:'你的写作习惯更接近？', options:[
-    {letter:'A',text:'凭感觉一挥而就，灵感驱动',tags:['E','L']},
-    {letter:'B',text:'精心构思大纲，步步为营',tags:['R','Se']},
-    {letter:'C',text:'反复修改打磨，一字一句推敲',tags:['I','T']},
-    {letter:'D',text:'碎片化记录灵感，随时拼接重组',tags:['Iv','L']}
-  ]},
-  { group:'创作倾向', text:'你希望读者读完你的作品后？', options:[
-    {letter:'A',text:'被深深打动，心中久久回荡',tags:['E','I']},
-    {letter:'B',text:'获得新的思考和看世界的方式',tags:['R','A']},
-    {letter:'C',text:'度过了一段愉悦的阅读时光',tags:['Ex','L']},
-    {letter:'D',text:'感受到文字本身的无限魅力',tags:['A','Iv']}
-  ]},
-  { group:'创作倾向', text:'对于写作的"规则"和"章法"，你怎么看？', options:[
-    {letter:'A',text:'了解规则是为了更好地打破它们',tags:['Iv','R']},
-    {letter:'B',text:'经典章法有其道理，值得尊重',tags:['T','Se']},
-    {letter:'C',text:'规则是束缚，自由的表达才最重要',tags:['E','L']},
-    {letter:'D',text:'无所谓，写出好内容才是王道',tags:['C','Ex']}
-  ]},
-  // Group 6: 文学价值观 (Q26-30)
-  { group:'文学价值观', text:'你认为文学最重要的功能是？', options:[
-    {letter:'A',text:'抒发情感，抚慰人心',tags:['E','L']},
-    {letter:'B',text:'记录时代，批判社会',tags:['R','Se']},
-    {letter:'C',text:'探索人性，追问存在的意义',tags:['I','A']},
-    {letter:'D',text:'创造美，提供纯粹的审美体验',tags:['E','A']}
-  ]},
-  { group:'文学价值观', text:'一本"好书"最重要的标准是？', options:[
-    {letter:'A',text:'能打动我，让我产生深深的共鸣',tags:['E','Ex']},
-    {letter:'B',text:'能启发我，促使我重新思考',tags:['R','I']},
-    {letter:'C',text:'能展示语言的可能性，开拓新的表达',tags:['Iv','A']},
-    {letter:'D',text:'能经受时间的考验，历久弥新',tags:['T','Se']}
-  ]},
-  { group:'文学价值观', text:'你对"畅销书"的态度是？', options:[
-    {letter:'A',text:'畅销有其道理，反映大众心声，值得关注',tags:['Ex','L']},
-    {letter:'B',text:'保持审慎，流行不等于好',tags:['R','Se']},
-    {letter:'C',text:'偶尔翻翻，了解当下社会趣味',tags:['I','C']},
-    {letter:'D',text:'不太关心排行，我有自己的阅读体系',tags:['T','Iv']}
-  ]},
-  { group:'文学价值观', text:'AI 写作兴起的时代，你的看法是？', options:[
-    {letter:'A',text:'人类独有的情感体验是AI无法替代的',tags:['E','T']},
-    {letter:'B',text:'这是文学演化发展的新契机',tags:['Iv','A']},
-    {letter:'C',text:'会改变写作方式，但不会取代文学',tags:['R','C']},
-    {letter:'D',text:'更凸显了人类创作的珍贵与独特',tags:['Se','I']}
-  ]},
-  { group:'文学价值观', text:'你希望阅读在你人生中扮演什么角色？', options:[
-    {letter:'A',text:'永远的精神伴侣，不离不弃',tags:['E','I']},
-    {letter:'B',text:'认识世界的一扇永不关闭的窗',tags:['Ex','R']},
-    {letter:'C',text:'安放灵魂的秘密花园和避难所',tags:['I','T']},
-    {letter:'D',text:'一片永远值得探索的未知森林',tags:['Iv','A']}
-  ]}
+  // Group 3: 阅读习惯 Reading Habits (Q21-30)
+  {g:'阅读习惯',t:'阅读时你通常会？',o:[
+    {l:'A',x:'手执铅笔，在书页边做标记、划线和批注',s:['R','Se']},
+    {l:'B',x:'全然沉浸其中，忘记周遭一切时间和空间',s:['E','I']},
+    {l:'C',x:'读到精彩处忍不住想立刻与人分享',s:['Ex','L']},
+    {l:'D',x:'读完后认真整理读书笔记或撰写书评',s:['R','I']}]},
+  {g:'阅读习惯',t:'遇到读不下去的书，你通常会？',o:[
+    {l:'A',x:'坚持读完——说不定后面有惊喜在等待',s:['Se','T']},
+    {l:'B',x:'果断放弃——人生有限，把时间留给更好的书',s:['L','Ex']},
+    {l:'C',x:'跳着看看——快速浏览有无亮点再决定',s:['Iv','L']},
+    {l:'D',x:'停下来思考——为什么读不下去，是书的问题还是我的问题',s:['R','I']}]},
+  {g:'阅读习惯',t:'你重读一本书的频率是？',o:[
+    {l:'A',x:'经常重读——好书如老友，每次重逢都有新的发现',s:['I','T']},
+    {l:'B',x:'偶尔重读——只有那几本特别珍爱的会反复翻阅',s:['E','Se']},
+    {l:'C',x:'很少重读——新书那么多，实在读不过来',s:['Ex','L']},
+    {l:'D',x:'有计划地重读——某些深度作品值得在不同人生阶段再读',s:['R','A']}]},
+  {g:'阅读习惯',t:'你对"剧透"的态度是？',o:[
+    {l:'A',x:'绝对不能剧透！那会毁掉全部的阅读乐趣',s:['Ex','E']},
+    {l:'B',x:'无所谓——重要的不是"写什么"而是"怎么写"',s:['R','A']},
+    {l:'C',x:'有时先知道结局反而能注意到更多精妙的伏笔',s:['Iv','L']},
+    {l:'D',x:'看作品类型——悬疑推理类绝对不行，文学类无所谓',s:['Se','C']}]},
+  {g:'阅读习惯',t:'读书时你的注意力更多放在？',o:[
+    {l:'A',x:'人物的内心世界和情感流动',s:['E','I']},
+    {l:'B',x:'情节的推进节奏和悬念设置',s:['Ex','C']},
+    {l:'C',x:'语言本身的节奏、质感和美感',s:['A','E']},
+    {l:'D',x:'主题的深度和思想的力量',s:['R','Se']}]},
+  {g:'阅读习惯',t:'你通常什么时候读书？',o:[
+    {l:'A',x:'深夜——万籁俱寂时最适合与文字独处',s:['I','Se']},
+    {l:'B',x:'清晨——用阅读开启清醒而充实的一天',s:['R','Se']},
+    {l:'C',x:'随时随地——只要有空闲就会掏出书或手机阅读',s:['Ex','L']},
+    {l:'D',x:'固定的阅读时间——仪式感让阅读更有滋味',s:['T','E']}]},
+  {g:'阅读习惯',t:'你读书的速度通常是？',o:[
+    {l:'A',x:'慢慢品读——好的文字值得一字一句地咀嚼',s:['I','A']},
+    {l:'B',x:'正常速度——跟着故事的节奏自然推进',s:['Ex','C']},
+    {l:'C',x:'时快时慢——精彩处加速，需要思考处放慢',s:['R','L']},
+    {l:'D',x:'很快——迫不及待地想知道后面发生了什么',s:['Ex','E']}]},
+  {g:'阅读习惯',t:'你会同时读好几本书吗？',o:[
+    {l:'A',x:'不会——一本书就是一个世界，我一次只能进入一个',s:['I','E']},
+    {l:'B',x:'会——不同心情配不同的书，交叉阅读更有趣',s:['L','Ex']},
+    {l:'C',x:'会——一本小说一本非虚构，左右脑交替',s:['R','C']},
+    {l:'D',x:'随意——不强求，顺其自然',s:['L','Iv']}]},
+  {g:'阅读习惯',t:'你读完一本书后会？',o:[
+    {l:'A',x:'久久回味——让书中的情绪和思想在心中慢慢沉淀',s:['E','I']},
+    {l:'B',x:'立刻写下感想或书评——趁感受还新鲜时记录下来',s:['R','Se']},
+    {l:'C',x:'立刻开始找下一本——阅读是一场永不停歇的旅程',s:['Ex','L']},
+    {l:'D',x:'与人交流——找读过的人聊聊，听听不同的看法',s:['Ex','C']}]},
+  {g:'阅读习惯',t:'你对电子书 vs 纸质书的看法是？',o:[
+    {l:'A',x:'纸质书的触感和气味是电子书永远无法替代的',s:['T','E']},
+    {l:'B',x:'电子书方便携带和检索，是实用的阅读工具',s:['R','C']},
+    {l:'C',x:'两者各有优势——重要的是内容，而非载体',s:['L','Iv']},
+    {l:'D',x:'无所谓——只要能阅读，什么形式都可以',s:['L','Ex']}]},
+
+  // Group 4: 角色共鸣 Character Resonance (Q31-40)
+  {g:'角色共鸣',t:'最吸引你的文学角色类型是？',o:[
+    {l:'A',x:'敏感细腻、内心世界极其丰富的人',s:['E','I']},
+    {l:'B',x:'勇敢果断、不断探索未知世界的冒险者',s:['Ex','C']},
+    {l:'C',x:'智慧深沉、看透世事却保持沉默的智者',s:['R','Se']},
+    {l:'D',x:'特立独行、不被世俗规则定义的怪才',s:['Iv','A']}]},
+  {g:'角色共鸣',t:'对"有缺陷的主角"，你的看法是？',o:[
+    {l:'A',x:'更喜欢——有缺陷的角色更真实立体，更具人性魅力',s:['R','Se']},
+    {l:'B',x:'更喜欢理想化的角色——阅读是逃离现实，不是复制现实',s:['E','L']},
+    {l:'C',x:'关键不在完美与否——在于角色塑造是否成功',s:['I','C']},
+    {l:'D',x:'角色是为人设服务的——好故事不拘角色类型',s:['Ex','L']}]},
+  {g:'角色共鸣',t:'阅读时你更容易？',o:[
+    {l:'A',x:'代入主角——与人物同呼吸共命运，同悲同喜',s:['E','Ex']},
+    {l:'B',x:'保持距离——冷静观察和分析角色的行为动机',s:['R','I']},
+    {l:'C',x:'关注角色之间的互动——人物关系网络才最迷人',s:['Ex','C']},
+    {l:'D',x:'思考角色的象征意义——他们代表了什么',s:['A','Se']}]},
+  {g:'角色共鸣',t:'哪种角色的成长弧光最能打动你？',o:[
+    {l:'A',x:'从脆弱到勇敢的自我疗愈之旅',s:['E','L']},
+    {l:'B',x:'从蒙昧到觉醒的思想蜕变之旅',s:['R','A']},
+    {l:'C',x:'从束缚到解放的个性突围之旅',s:['Iv','Ex']},
+    {l:'D',x:'从迷失到找到生命意义的精神追寻之旅',s:['I','T']}]},
+  {g:'角色共鸣',t:'如果进入一本书的世界，你想成为？',o:[
+    {l:'A',x:'故事的讲述者和见证人',s:['I','A']},
+    {l:'B',x:'主角身边最忠诚的伙伴',s:['E','Ex']},
+    {l:'C',x:'冷眼旁观的智者或路人',s:['R','Se']},
+    {l:'D',x:'一个神秘来客，不经意间改变故事走向',s:['Iv','L']}]},
+  {g:'角色共鸣',t:'你更喜欢哪种角色关系？',o:[
+    {l:'A',x:'深刻的情感羁绊——亲情、友情、爱情的极致书写',s:['E','C']},
+    {l:'B',x:'智识的碰撞与交锋——思想上的对手与知音',s:['R','A']},
+    {l:'C',x:'微妙的权力博弈——人与人之间的复杂张力',s:['Se','Ex']},
+    {l:'D',x:'超越常规的关系——无法被简单定义的情感联结',s:['Iv','I']}]},
+  {g:'角色共鸣',t:'你对"反派角色"的态度是？',o:[
+    {l:'A',x:'好的反派比主角更迷人——人性的暗面更有深度',s:['R','Se']},
+    {l:'B',x:'需要有明确的道德立场——善恶模糊会让人不安',s:['T','E']},
+    {l:'C',x:'反派也是人——理解他们的动机比评判更重要',s:['I','A']},
+    {l:'D',x:'无所谓善恶——角色的魅力在于复杂性本身',s:['Iv','L']}]},
+  {g:'角色共鸣',t:'文学中的女性角色，你最欣赏？',o:[
+    {l:'A',x:'情感深沉、内心强大的女性',s:['E','I']},
+    {l:'B',x:'勇敢独立、打破社会桎梏的女性',s:['Ex','Iv']},
+    {l:'C',x:'智慧理性、以思想改变世界的女性',s:['R','Se']},
+    {l:'D',x:'复杂矛盾、难以被简单定义的女性',s:['A','T']}]},
+  {g:'角色共鸣',t:'你认为一个好的文学角色最重要的是？',o:[
+    {l:'A',x:'让我产生共情——我能理解他的选择和痛苦',s:['E','C']},
+    {l:'B',x:'让我思考——他能引发我对人性和社会的反思',s:['R','A']},
+    {l:'C',x:'让我惊喜——他做出我不敢想的选择，走向我不敢走的路',s:['Iv','Ex']},
+    {l:'D',x:'让我记住——合上书后他的形象久久挥之不去',s:['I','Se']}]},
+  {g:'角色共鸣',t:'你更在意角色的？',o:[
+    {l:'A',x:'内在世界——他的想法、情感和精神状态',s:['I','E']},
+    {l:'B',x:'行动和选择——他用什么方式面对命运',s:['Ex','C']},
+    {l:'C',x:'成长轨迹——他从哪里来，最终走到了哪里',s:['R','Se']},
+    {l:'D',x:'独特性——他有什么与众不同的气质和魅力',s:['Iv','A']}]},
+
+  // Group 5: 创作倾向 Creative Tendencies (Q41-50)
+  {g:'创作倾向',t:'如果要自己动笔写作，你更可能写？',o:[
+    {l:'A',x:'诗歌或抒情散文——用最凝练的语言表达最深的情感',s:['E','A']},
+    {l:'B',x:'小说或故事——构建一个完整的世界和人物命运',s:['Ex','C']},
+    {l:'C',x:'评论或杂文——表达观点，解剖现象',s:['R','Se']},
+    {l:'D',x:'不拘形式的实验性文体——打破所有类型的边界',s:['Iv','A']}]},
+  {g:'创作倾向',t:'你在写作中最重视什么？',o:[
+    {l:'A',x:'情感的真挚与自然——文字从心中流出',s:['E','I']},
+    {l:'B',x:'结构的精巧与逻辑的自洽——形式即内容',s:['R','Iv']},
+    {l:'C',x:'人物的鲜活与故事的生动——讲好一个故事',s:['Ex','C']},
+    {l:'D',x:'思想的独特与观点的锐利——让人重新看世界',s:['A','Se']}]},
+  {g:'创作倾向',t:'你的写作习惯更接近？',o:[
+    {l:'A',x:'凭感觉一挥而就——灵感来了挡都挡不住',s:['E','L']},
+    {l:'B',x:'精心构思大纲——每一步都规划好再动笔',s:['R','Se']},
+    {l:'C',x:'反复修改打磨——每一句话都要推敲到满意',s:['I','T']},
+    {l:'D',x:'碎片式记录——随时随地捕捉灵感，最后再拼接',s:['Iv','L']}]},
+  {g:'创作倾向',t:'你希望读者读完你的作品后？',o:[
+    {l:'A',x:'被深深打动——心中留下温暖而久远的回响',s:['E','I']},
+    {l:'B',x:'获得启发——用新的方式看世界和思考问题',s:['R','A']},
+    {l:'C',x:'感到愉悦——度过了一段美好的阅读时光',s:['Ex','L']},
+    {l:'D',x:'感到震撼——体验了前所未有的文学形式',s:['Iv','A']}]},
+  {g:'创作倾向',t:'对于写作的"规则"和"章法"，你怎么看？',o:[
+    {l:'A',x:'先了解规则，再决定是否打破它',s:['Iv','R']},
+    {l:'B',x:'经典章法自有其道理，值得尊重和学习',s:['T','Se']},
+    {l:'C',x:'规则是束缚——自由的表达才最重要',s:['E','L']},
+    {l:'D',x:'不太关心——写出好内容自然就是对的',s:['C','Ex']}]},
+  {g:'创作倾向',t:'你更喜欢哪种创作状态？',o:[
+    {l:'A',x:'深夜独处——全世界都安静了，灵感才会降临',s:['I','Se']},
+    {l:'B',x:'在人群中——观察人、听对话，生活是最好的素材',s:['Ex','C']},
+    {l:'C',x:'规律而自律——每天固定时间写作，像上班一样',s:['R','T']},
+    {l:'D',x:'随性而至——不想写的时候不勉强自己',s:['L','E']}]},
+  {g:'创作倾向',t:'你受到哪位作家的影响最大？',o:[
+    {l:'A',x:'抒情型的诗人或散文家',s:['E','A']},
+    {l:'B',x:'思想型的批评家或哲学家',s:['R','Se']},
+    {l:'C',x:'讲故事的大师——小说家',s:['Ex','C']},
+    {l:'D',x:'先锋派的实验者',s:['Iv','A']}]},
+  {g:'创作倾向',t:'写作遇到瓶颈时，你会？',o:[
+    {l:'A',x:'停下来去生活——经历和感受是最好的解药',s:['E','C']},
+    {l:'B',x:'大量阅读——从他人的作品中寻找启发',s:['R','T']},
+    {l:'C',x:'硬写——不写出来永远不知道问题在哪',s:['Se','Ex']},
+    {l:'D',x:'换个方式——如果写不出文字，就去画、去走、去想',s:['Iv','L']}]},
+  {g:'创作倾向',t:'你认为一个写作者最重要的品质是？',o:[
+    {l:'A',x:'真诚——对自己诚实，才能写出打动人的文字',s:['E','I']},
+    {l:'B',x:'勤奋——写作是手艺活，需要日复一日的打磨',s:['R','T']},
+    {l:'C',x:'敏锐——对生活和人性有独特的观察角度',s:['Ex','Se']},
+    {l:'D',x:'勇气——敢于尝试别人没有做过的事情',s:['Iv','A']}]},
+  {g:'创作倾向',t:'如果为一个陌生人写一段文字，你想写？',o:[
+    {l:'A',x:'一首诗——用最少的字说最多的话',s:['E','A']},
+    {l:'B',x:'一封信——像与老朋友交谈般亲切自然',s:['Ex','C']},
+    {l:'C',x:'一篇短论——分享一个值得深思的观点',s:['R','Se']},
+    {l:'D',x:'一个微型故事——在最短的篇幅里创造一个世界',s:['Iv','L']}]},
+
+  // Group 6: 文学价值观 Literary Values (Q51-60)
+  {g:'文学价值观',t:'你认为文学最重要的功能是？',o:[
+    {l:'A',x:'抒发情感，抚慰人心——文学是灵魂的药',s:['E','L']},
+    {l:'B',x:'记录时代，批判社会——文学是世界的镜子',s:['R','Se']},
+    {l:'C',x:'探索人性，追问存在——文学是哲学的姐妹',s:['I','A']},
+    {l:'D',x:'创造美，提供纯粹的审美体验——文学是语言的艺术',s:['E','A']}]},
+  {g:'文学价值观',t:'一本"好书"最重要的标准是？',o:[
+    {l:'A',x:'能打动我——让我产生灵魂深处的共鸣',s:['E','Ex']},
+    {l:'B',x:'能启发我——促使我重新审视自己和世界',s:['R','I']},
+    {l:'C',x:'能开拓我——展示语言和形式的全新可能性',s:['Iv','A']},
+    {l:'D',x:'能陪伴我——经得起时间的检验，可以一读再读',s:['T','Se']}]},
+  {g:'文学价值观',t:'你对"畅销书"的态度是？',o:[
+    {l:'A',x:'畅销自有道理——反映时代的集体心声，值得关注',s:['Ex','L']},
+    {l:'B',x:'保持审慎——流行不等于好，热度不等于深度',s:['R','Se']},
+    {l:'C',x:'偶尔翻翻——了解大众趣味也是一种社会观察',s:['I','C']},
+    {l:'D',x:'不太关心——我有自己独立的阅读标准',s:['T','Iv']}]},
+  {g:'文学价值观',t:'AI 写作兴起的时代，你的看法是？',o:[
+    {l:'A',x:'人类独有的情感体验和生命温度是AI永远无法替代的',s:['E','T']},
+    {l:'B',x:'这是文学演化发展的新契机，值得开放地看待',s:['Iv','A']},
+    {l:'C',x:'会改变写作的生产方式，但不会改变文学的本质',s:['R','C']},
+    {l:'D',x:'更加凸显了人类创作的珍贵和不可复制性',s:['Se','I']}]},
+  {g:'文学价值观',t:'你认为文学应该"有用"吗？',o:[
+    {l:'A',x:'文学的价值不在于功用——无用之用方为大用',s:['A','T']},
+    {l:'B',x:'文学有教化功能——好的文学能让人成为更好的人',s:['R','Se']},
+    {l:'C',x:'文学是生活的避难所——抚慰人心就是最大的用',s:['E','L']},
+    {l:'D',x:'文学是认识世界的工具——帮助我们理解复杂的人性',s:['C','I']}]},
+  {g:'文学价值观',t:'你选择捐赠/保留一本书的标准是？',o:[
+    {l:'A',x:'情感价值——这本书在某个生命阶段对我有特殊意义',s:['E','I']},
+    {l:'B',x:'思想价值——值得反复研读的深度作品',s:['R','A']},
+    {l:'C',x:'重读可能性——我会不会再翻开它',s:['L','C']},
+    {l:'D',x:'收藏价值——版本、装帧或签名',s:['T','Ex']}]},
+  {g:'文学价值观',t:'你会因为"大家都说好"而去读一本书吗？',o:[
+    {l:'A',x:'会——众人的眼光往往值得参考',s:['Ex','L']},
+    {l:'B',x:'可能会——但带着审慎的态度去检验',s:['R','Se']},
+    {l:'C',x:'不太会——我的阅读口味与他人无关',s:['I','Iv']},
+    {l:'D',x:'看情况——如果是信任的人推荐就会',s:['E','C']}]},
+  {g:'文学价值观',t:'对"文学已死"的说法，你的反应是？',o:[
+    {l:'A',x:'荒谬——只要还有人阅读和写作，文学就永远活着',s:['E','T']},
+    {l:'B',x:'警惕——文学的形式需要不断革新才能保持生命力',s:['Iv','R']},
+    {l:'C',x:'无所谓——文学不需要向任何人证明自己的存在',s:['I','Se']},
+    {l:'D',x:'关注——但相信文学会以新的形态继续存在',s:['C','L']}]},
+  {g:'文学价值观',t:'如果只能带三本书去一座荒岛，你选？',o:[
+    {l:'A',x:'一本诗集、一本小说、一本哲学著作',s:['A','Se']},
+    {l:'B',x:'一本百科全书、一本生存指南、一本最厚的小说',s:['C','R']},
+    {l:'C',x:'三本完全不同类型的最爱之书',s:['Ex','L']},
+    {l:'D',x:'一本空白的笔记本和两本经典——更多时间思考',s:['I','T']}]},
+  {g:'文学价值观',t:'你希望阅读在你生命中扮演什么角色？',o:[
+    {l:'A',x:'永远的精神伴侣——不离不弃的知己',s:['E','I']},
+    {l:'B',x:'认识世界的窗口——不断打开新的视野',s:['Ex','R']},
+    {l:'C',x:'安放灵魂的秘密花园——一个可以随时回去的地方',s:['I','T']},
+    {l:'D',x:'不断探索的未知森林——总有新的风景在等待',s:['Iv','A']}]},
+
+  // Group 7: 美学取向 Aesthetic Orientation (Q61-70)
+  {g:'美学取向',t:'一本书的封面设计，你更喜欢？',o:[
+    {l:'A',x:'简约留白——干干净净，充满想象空间',s:['I','A']},
+    {l:'B',x:'古典雅致——传统的字体和纹样',s:['T','Se']},
+    {l:'C',x:'大胆前卫——让人眼前一亮的设计',s:['Iv','Ex']},
+    {l:'D',x:'温暖手绘——有人情味和温度的风格',s:['E','C']}]},
+  {g:'美学取向',t:'你觉得阅读时最不可或缺的感官体验是？',o:[
+    {l:'A',x:'触感——纸张的质地和翻页的仪式感',s:['T','I']},
+    {l:'B',x:'视觉——文字排版的舒适和字体之美',s:['A','Se']},
+    {l:'C',x:'嗅觉——书香和油墨的味道让人安心',s:['E','T']},
+    {l:'D',x:'听觉——安静的环境或恰到好处的背景音',s:['L','C']}]},
+  {g:'美学取向',t:'你更喜欢哪种自然意象在文学中出现？',o:[
+    {l:'A',x:'大海和星空——无限、神秘和永恒',s:['A','I']},
+    {l:'B',x:'森林和山川——沉稳、厚重和生命力',s:['T','Se']},
+    {l:'C',x:'花开花落——细腻、短暂的美',s:['E','C']},
+    {l:'D',x:'城市街巷——人间烟火和日常生活',s:['Ex','L']}]},
+  {g:'美学取向',t:'哪种颜色最能代表你的文学审美？',o:[
+    {l:'A',x:'深蓝色——沉静、深邃、知性',s:['R','I']},
+    {l:'B',x:'暖棕色——温暖、怀旧、有故事感',s:['T','E']},
+    {l:'C',x:'墨黑色——纯粹、极致、有力',s:['Se','A']},
+    {l:'D',x:'象牙白——空灵、留白、充满可能性',s:['Iv','L']}]},
+  {g:'美学取向',t:'你在文学中最享受哪种氛围？',o:[
+    {l:'A',x:'淡淡的忧伤——一种美丽的哀愁',s:['E','I']},
+    {l:'B',x:'克制的张力——表面平静下的暗流涌动',s:['R','Se']},
+    {l:'C',x:'温暖的日常——平淡中发现诗意',s:['L','C']},
+    {l:'D',x:'荒诞的狂欢——在疯狂中看见真实',s:['Iv','A']}]},
+  {g:'美学取向',t:'你对文学中"美"与"真"的关系怎么看？',o:[
+    {l:'A',x:'美即是真——真正的美一定包含着真实',s:['A','T']},
+    {l:'B',x:'真高于美——宁可丑陋的真实，不要美丽的谎言',s:['R','Se']},
+    {l:'C',x:'美可以独立于真——文学的美本身就是一种真实',s:['E','Iv']},
+    {l:'D',x:'不必二分——美与真本就不是对立的概念',s:['L','C']}]},
+  {g:'美学取向',t:'你对文学作品中的"暴力描写"怎么看？',o:[
+    {l:'A',x:'如果为表达主题服务则接受——暴力本身可以很美',s:['A','Iv']},
+    {l:'B',x:'需要节制——过度渲染有失文学尊严',s:['T','Se']},
+    {l:'C',x:'看描写方式——文学性的处理可以化丑陋为深刻',s:['R','I']},
+    {l:'D',x:'不太舒适——我更偏爱温和的表达方式',s:['E','L']}]},
+  {g:'美学取向',t:'你更喜欢文学中的哪种"光"？',o:[
+    {l:'A',x:'黄昏的暖光——温柔、怀旧、一切都在消逝',s:['E','T']},
+    {l:'B',x:'清晨的冷光——清醒、锐利、新的一天',s:['R','Se']},
+    {l:'C',x:'午夜的星光——孤独、深邃、永恒',s:['A','I']},
+    {l:'D',x:'人间的灯光——窗子里透出的生活气息',s:['C','L']}]},
+  {g:'美学取向',t:'你理想的阅读角应该有什么？',o:[
+    {l:'A',x:'一扇对着花园或远山的窗',s:['I','A']},
+    {l:'B',x:'从地板到天花板的大书墙',s:['T','R']},
+    {l:'C',x:'一张舒服的沙发和温暖的灯光',s:['E','L']},
+    {l:'D',x:'什么都没有——只需要书和我自己',s:['Se','Iv']}]},
+  {g:'美学取向',t:'如果用一种乐器形容你的阅读品味？',o:[
+    {l:'A',x:'钢琴——丰富多变，深沉而有力量',s:['R','Se']},
+    {l:'B',x:'小提琴——细腻抒情，直击心灵',s:['E','I']},
+    {l:'C',x:'吉他——温暖亲切，适合在任何地方弹奏',s:['L','C']},
+    {l:'D',x:'打击乐——有节奏感，打破常规预期',s:['Iv','Ex']}]},
+
+  // Group 8: 叙事偏好 Narrative Preferences (Q71-80)
+  {g:'叙事偏好',t:'你更喜欢哪种叙事节奏？',o:[
+    {l:'A',x:'慢板——徐徐展开，每处细节都值得品味',s:['I','A']},
+    {l:'B',x:'快板——紧凑推进，让人喘不过气来',s:['Ex','C']},
+    {l:'C',x:'变奏——张弛有度，节奏变化本身就是艺术',s:['R','Iv']},
+    {l:'D',x:'自由——不受常规节奏约束',s:['L','Iv']}]},
+  {g:'叙事偏好',t:'你更喜欢哪种时间结构？',o:[
+    {l:'A',x:'线性叙事——从头到尾，跟着时间走最自然',s:['C','L']},
+    {l:'B',x:'倒叙或插叙——过去与现在交织出更丰富的层次',s:['R','Se']},
+    {l:'C',x:'碎片化时间——拼图式的阅读体验',s:['Iv','A']},
+    {l:'D',x:'循环或非线性时间——挑战对时间的传统认知',s:['A','Iv']}]},
+  {g:'叙事偏好',t:'文学作品中的"巧合"，你怎么看？',o:[
+    {l:'A',x:'太刻意的巧合让人出戏——生活没有那么多正好',s:['R','Se']},
+    {l:'B',x:'命运感的巧合很美——文学高于生活的地方就在于此',s:['E','A']},
+    {l:'C',x:'看处理方式——高手的巧合可以让人拍案叫绝',s:['I','T']},
+    {l:'D',x:'不太在意——只要故事好看，巧合不巧合无所谓',s:['L','Ex']}]},
+  {g:'叙事偏好',t:'对"开放式结局"的看法？',o:[
+    {l:'A',x:'喜欢——留白让故事在读者心中继续生长',s:['I','A']},
+    {l:'B',x:'可以接受——但要有足够的线索让结局有方向',s:['R','C']},
+    {l:'C',x:'不太喜欢——我需要一个明确的交代',s:['Ex','Se']},
+    {l:'D',x:'看作品——有些故事注定没有结局',s:['L','T']}]},
+  {g:'叙事偏好',t:'你更喜欢哪种规模的叙事？',o:[
+    {l:'A',x:'史诗级——几代人的命运在历史洪流中起伏',s:['Se','T']},
+    {l:'B',x:'个人化——一个人的内心宇宙就足够宏大',s:['I','A']},
+    {l:'C',x:'一个瞬间——在极短的时间里展现生命的全部厚度',s:['E','Iv']},
+    {l:'D',x:'群像式——多条线索交织的社会画卷',s:['Ex','C']}]},
+  {g:'叙事偏好',t:'你如何看待"元叙事"（关于叙事本身的叙事）？',o:[
+    {l:'A',x:'着迷——叙述者闯入故事、打破第四面墙，令人兴奋',s:['Iv','A']},
+    {l:'B',x:'有趣但需节制——过度使用会变成技巧的炫耀',s:['R','Se']},
+    {l:'C',x:'不太喜欢——我更想沉浸在故事里',s:['E','C']},
+    {l:'D',x:'无所谓——形式不重要，内容才重要',s:['L','Ex']}]},
+  {g:'叙事偏好',t:'你最享受哪种阅读体验？',o:[
+    {l:'A',x:'被故事完全吞没——忘记自己在阅读',s:['E','C']},
+    {l:'B',x:'与作者对话——时刻感到一个聪明人在对你说话',s:['R','I']},
+    {l:'C',x:'参与解谜——作为读者也在创造意义',s:['A','Iv']},
+    {l:'D',x:'轻松陪伴——像和朋友聊天一样自然',s:['L','Ex']}]},
+  {g:'叙事偏好',t:'对文学中的"废话"和"闲笔"怎么看？',o:[
+    {l:'A',x:'闲笔不闲——最好的闲笔往往蕴含着最深的意味',s:['I','A']},
+    {l:'B',x:'适可而止——太多的枝蔓会削弱叙事的力量',s:['R','C']},
+    {l:'C',x:'享受闲笔——人生的趣味往往在无关紧要处',s:['E','L']},
+    {l:'D',x:'看作者——高手随手拈来皆是文章',s:['T','Iv']}]},
+  {g:'叙事偏好',t:'你喜欢怎样的小说章节划分？',o:[
+    {l:'A',x:'短章节——像一小口一小口地品味',s:['L','C']},
+    {l:'B',x:'长章节——充分沉浸，不被打断',s:['I','E']},
+    {l:'C',x:'变化长度——根据内容需要灵活调整',s:['R','Iv']},
+    {l:'D',x:'无所谓——章节长短不影响我的阅读体验',s:['Ex','L']}]},
+  {g:'叙事偏好',t:'你更欣赏哪种"结尾"的方式？',o:[
+    {l:'A',x:'首尾呼应——像圆一样完整闭合',s:['T','Se']},
+    {l:'B',x:'余音绕梁——结束后还有东西在心中回荡',s:['E','I']},
+    {l:'C',x:'戛然而止——在最意想不到的地方结束',s:['Iv','A']},
+    {l:'D',x:'自然而然——故事说完了就结束',s:['L','C']}]},
+
+  // Group 9: 阅读仪式 Reading Rituals (Q81-90)
+  {g:'阅读仪式',t:'开始读一本新书之前，你有仪式吗？',o:[
+    {l:'A',x:'有——先读前言、后记，了解创作背景',s:['R','T']},
+    {l:'B',x:'有——端一杯热茶或咖啡，找一个舒服的位置',s:['E','L']},
+    {l:'C',x:'没有——迫不及待地翻开第一页',s:['Ex','C']},
+    {l:'D',x:'看心情——有时有有时没有',s:['L','Iv']}]},
+  {g:'阅读仪式',t:'你会给读过的书做标记吗？',o:[
+    {l:'A',x:'会——书是用来读的，不是用来展览的',s:['R','C']},
+    {l:'B',x:'会——但只用铅笔，轻轻标记',s:['I','T']},
+    {l:'C',x:'不会——书应该保持干净整洁',s:['T','Se']},
+    {l:'D',x:'用书签或便签——不影响书页本身',s:['L','E']}]},
+  {g:'阅读仪式',t:'你有一个"待读清单"吗？',o:[
+    {l:'A',x:'有——精心整理，按主题和优先级排列',s:['R','Se']},
+    {l:'B',x:'有——但经常不按计划来，随心情选书',s:['E','L']},
+    {l:'C',x:'没有——读到什么是什么，顺其自然',s:['L','Ex']},
+    {l:'D',x:'有一个模糊的清单——在心里，不在纸上',s:['I','A']}]},
+  {g:'阅读仪式',t:'你会因为封面好看而买一本书吗？',o:[
+    {l:'A',x:'当然会——美的封面是书的第一首诗',s:['E','A']},
+    {l:'B',x:'偶尔会——但最终还是会看内容',s:['L','C']},
+    {l:'C',x:'不会——我是来读书的，不是来买画的',s:['R','Se']},
+    {l:'D',x:'封面会影响我拿起它，但不会决定我买它',s:['I','T']}]},
+  {g:'阅读仪式',t:'你对书签的态度是？',o:[
+    {l:'A',x:'专用书签——有些书签本身就是艺术品',s:['E','T']},
+    {l:'B',x:'随手拈来——车票、便签、发票都可以',s:['L','C']},
+    {l:'C',x:'记住页码就好——不需要书签',s:['R','Se']},
+    {l:'D',x:'折角——书是自己的，留下阅读的痕迹很美',s:['Iv','L']}]},
+  {g:'阅读仪式',t:'在公共交通上阅读，你会？',o:[
+    {l:'A',x:'完全沉浸——不管周围多吵都能进入书中世界',s:['I','E']},
+    {l:'B',x:'享受这种体验——在人群中独处很特别',s:['Ex','A']},
+    {l:'C',x:'只能读轻松的——太深的内容需要安静环境',s:['L','C']},
+    {l:'D',x:'不太在外面读书——阅读需要私密空间',s:['Se','T']}]},
+  {g:'阅读仪式',t:'读书前你会先了解作者的生平吗？',o:[
+    {l:'A',x:'会——了解作者才能更好地理解作品',s:['R','T']},
+    {l:'B',x:'不会——让作品自己说话，不受作者影响',s:['Iv','A']},
+    {l:'C',x:'有时候——如果读完很喜欢会回头了解',s:['L','C']},
+    {l:'D',x:'无所谓——知道或不知道差别不大',s:['Ex','L']}]},
+  {g:'阅读仪式',t:'你如何对待一本特别喜欢的书？',o:[
+    {l:'A',x:'反复翻阅——每次重读都像第一次',s:['I','E']},
+    {l:'B',x:'推荐给所有我认识的人',s:['Ex','L']},
+    {l:'C',x:'为它写一篇长长的书评',s:['R','Se']},
+    {l:'D',x:'把它放在书架最显眼的位置',s:['T','A']}]},
+  {g:'阅读仪式',t:'你读书时会吃东西或喝东西吗？',o:[
+    {l:'A',x:'一杯茶或咖啡是最佳伴侣',s:['T','E']},
+    {l:'B',x:'不会——读书和进食应该分开',s:['Se','R']},
+    {l:'C',x:'偶尔边吃零食边读——很惬意',s:['L','Ex']},
+    {l:'D',x:'都可以——没有特别的习惯',s:['L','C']}]},
+  {g:'阅读仪式',t:'一天中你最喜欢的阅读时间是？',o:[
+    {l:'A',x:'深夜——全世界安静的时候',s:['I','A']},
+    {l:'B',x:'清晨——头脑最清醒的时刻',s:['R','Se']},
+    {l:'C',x:'午后——阳光正好，适合慵懒地读书',s:['E','L']},
+    {l:'D',x:'没有固定时间——想读就读',s:['Ex','L']}]},
+
+  // Group 10: 文学哲思 Literary Philosophy (Q91-100)
+  {g:'文学哲思',t:'你认为阅读本质上是一种什么行为？',o:[
+    {l:'A',x:'对话——与作者、与人物、与自己的一场深度交谈',s:['I','A']},
+    {l:'B',x:'逃避——从现实中暂时抽身，去往另一个世界',s:['E','L']},
+    {l:'C',x:'学习——获取知识、经验和智慧的过程',s:['R','C']},
+    {l:'D',x:'创造——读者在阅读中完成了作品的另一半意义',s:['Iv','A']}]},
+  {g:'文学哲思',t:'文学与你的关系，最接近哪种？',o:[
+    {l:'A',x:'知己——它知道我内心深处的一切',s:['E','I']},
+    {l:'B',x:'老师——它不断挑战和重塑我的认知',s:['R','Se']},
+    {l:'C',x:'旅伴——陪伴我走过人生的不同阶段',s:['Ex','C']},
+    {l:'D',x:'镜子——让我更清晰地看见自己',s:['I','T']}]},
+  {g:'文学哲思',t:'你相信"一千个读者就有一千个哈姆雷特"吗？',o:[
+    {l:'A',x:'完全相信——每个读者都在创造自己的版本',s:['Iv','A']},
+    {l:'B',x:'一定程度上——但好作品有相对稳定的核心意义',s:['R','C']},
+    {l:'C',x:'这是阅读的魅力所在——多样性正是文学的生命力',s:['E','Ex']},
+    {l:'D',x:'过度解读有时会偏离——尊重文本本身很重要',s:['T','Se']}]},
+  {g:'文学哲思',t:'对你来说，文学与生活的关系是？',o:[
+    {l:'A',x:'文学高于生活——它提炼和升华了日常经验',s:['A','T']},
+    {l:'B',x:'文学就是生活——两者不可分割',s:['E','C']},
+    {l:'C',x:'文学补充生活——它提供生活给不了的东西',s:['I','Se']},
+    {l:'D',x:'文学解释生活——它帮助我们理解自己和他人',s:['R','C']}]},
+  {g:'文学哲思',t:'如果文学是一种"疾病"，你愿意得的病是？',o:[
+    {l:'A',x:'无法抑制的共鸣——对每一个故事都感同身受',s:['E','Ex']},
+    {l:'B',x:'永不满足的好奇——总想知道下一页是什么',s:['Ex','L']},
+    {l:'C',x:'无法停止的思考——每本书都引发新的问题',s:['R','A']},
+    {l:'D',x:'美丽的忧郁——在文字中品尝生命的复杂滋味',s:['I','Se']}]},
+  {g:'文学哲思',t:'你如何理解文学中的"沉默"？',o:[
+    {l:'A',x:'沉默是语言的最高境界——有些东西说不得',s:['A','I']},
+    {l:'B',x:'沉默是一种修辞——作者有意为之的留白',s:['R','Se']},
+    {l:'C',x:'沉默是失败——文学的任务就是说不可说之物',s:['Iv','Ex']},
+    {l:'D',x:'沉默就是沉默——不需要过度解读',s:['C','L']}]},
+  {g:'文学哲思',t:'你认为一个作家最大的责任是什么？',o:[
+    {l:'A',x:'对自己诚实——写出真正想说的话',s:['E','I']},
+    {l:'B',x:'对时代诚实——记录和反思他所处的世界',s:['R','Se']},
+    {l:'C',x:'对语言诚实——让每一个词都准确而有力',s:['A','T']},
+    {l:'D',x:'对读者诚实——不欺骗、不取巧、不迎合',s:['C','L']}]},
+  {g:'文学哲思',t:'如果可以，你希望自己是文学中的什么角色？',o:[
+    {l:'A',x:'叙述者——用自己的声音讲述故事',s:['I','A']},
+    {l:'B',x:'主角——亲历一切，感受一切',s:['E','Ex']},
+    {l:'C',x:'旁观者——安静地见证一切发生',s:['R','Se']},
+    {l:'D',x:'作者——创造整个世界的上帝',s:['Iv','T']}]},
+  {g:'文学哲思',t:'你心目中不可替代的一本书是？',o:[
+    {l:'A',x:'那本在年轻时击中我灵魂的书',s:['E','I']},
+    {l:'B',x:'那本改变了我看待世界方式的书',s:['R','A']},
+    {l:'C',x:'那本让我爱上阅读的书',s:['Ex','C']},
+    {l:'D',x:'那本我至今没有完全读懂但一直在重读的书',s:['Se','T']}]},
+  {g:'文学哲思',t:'如果用一个词定义你与文学的关系——',o:[
+    {l:'A',x:'热爱——单纯而深沉的情感',s:['E','I']},
+    {l:'B',x:'追问——永不停歇的思考和探索',s:['R','A']},
+    {l:'C',x:'陪伴——最长情的守候',s:['Ex','C']},
+    {l:'D',x:'宿命——从出生的那一刻就注定了的相遇',s:['T','Se']}]}
 ];
 
-// Personality Types
-const PERSONALITIES = {
+// ==================== PERSONALITY TYPES ====================
+const P = {
   poetic: {
-    name:'诗意栖居者',
-    icon:'🕊️',
-    subtitle:'用心灵感受文字的诗人',
-    traits:['感性','抽象','内省'],
-    match_dims:{E:1,R:-1,T:0,Iv:0,I:1,Ex:-1,Se:0,L:0,A:1,C:-1},
-    desc:'你是一个用心灵感受文字的人。对你来说，文学是情感的栖息地，是美的化身。你钟爱那些能触动心弦的词句，在阅读中寻找灵魂的共鸣。你的书架可能充满诗集和抒情散文，你相信文字最强大的力量在于唤起人类最深处的情感。',
-    strength:'情感细腻，善于在文字中发现美和共鸣，拥有丰富的内心世界。',
-    blind:'有时可能过于沉浸于情感体验，而忽略了作品的结构和思想层面。',
-    reading:'建议尝试阅读不同类型的作品来拓宽视野。在保持感性的同时，偶尔也可以用分析的眼光来审视文本，会发现另一种阅读的乐趣。',
-    books:['《诗经》','《瓦尔登湖》— 梭罗','《小王子》— 圣埃克苏佩里','《人间词话》— 王国维','《飞鸟集》— 泰戈尔']
+    name:'诗意栖居者',icon:'🕊️',sub:'用心灵感受文字的诗性灵魂',
+    match_dims:{E:1,R:-1,I:1,Ex:-1,A:1,C:-1,T:0,Iv:0,Se:0,L:0},
+    traits:['感性','抽象','内省','审美','抒情'],
+    portrait:'你的文学灵魂是一片月光下的花园。你读诗时不是在读文字，而是在聆听一种只有心灵才能听见的音乐。对你而言，一本书的分量不在于它说了什么道理，而在于它能否在你心中激荡起层层涟漪。你拥有一种罕见的能力——在平凡的文字中看见非凡的美。',
+    desc:'你是一个以感性和审美为导航的读者。文学对你来说从来不是墙上挂着的知识图谱，而是心湖里落下的一片叶子——涟漪荡漾开来，没有方向，却覆盖了全部。你钟爱诗歌的韵律、散文的温度，也容易被小说中那些"无用的细节"打动——一盏灯、一声叹息、一个不为什么的黄昏。你的书架可能不像一个图书馆，更像一个收藏着不同天气的心灵日记。',
+    aura:'温暖而略带忧郁的秋日午后气质——像一杯正在冷却的红茶，表面平静但深处暗香浮动。你的阅读气场让人感到安宁，却又有一种不易察觉的深邃。',
+    strength:'嗅觉灵敏，能在最不起眼的文字中发现诗意和美。情感共鸣能力极强，常常能在阅读中体验到比现实更真实的感动。拥有一颗不会被岁月磨钝的柔软之心。',
+    blind:'有时会过度沉溺于美的安慰，而回避了文学中必要的尖锐和刺痛。对过于理性的文本分析可能缺乏耐心，容易因为"不美"而错过深刻。阅读选择可能过度集中于抒情类作品。',
+    advice:'偶尔把诗集放下，去读一本冷静得近乎冷酷的社科著作——不是为了改变你的本性，而是让你的感性在理性的磨刀石上更加锋利。尝试用分析的眼光去解剖一首你最喜欢的诗，看看美的背后藏着怎样的结构，你会发现另一种阅读的乐趣。',
+    authors:[{n:'泰戈尔',r:'飞鸟与流萤，诗与哲的完美融合'},{n:'川端康成',r:'在美的极致中看见虚无'},{n:'李清照',r:'婉约深处自有风骨'},{n:'聂鲁达',r:'把整个世界写成一首情诗'},{n:'圣埃克苏佩里',r:'用最轻的语言说最重的事'}],
+    books:['《飞鸟集》— 泰戈尔','《雪国》— 川端康成','《小王子》— 圣埃克苏佩里','《人间词话》— 王国维','《漱玉词》— 李清照','《瓦尔登湖》— 梭罗','《二十首情诗与绝望的歌》— 聂鲁达','《边城》— 沈从文','《奥兰多》— 伍尔夫','《枕草子》— 清少纳言'],
+    era:'浪漫主义时期、象征主义、日本平安时代文学',
+    circle:'诗歌沙龙、文学读书会、独立书店文艺圈',
+    writing:'如果你写作，你可能会成为一个"用感官呼吸的作家"——你的文字自带温度和湿度，读者不是用眼睛在读，而是用皮肤在感受。你的作品可能不会以情节取胜，但会以一段关于雨水、疲惫或沉默的描写让人记住很久。你擅长用语言捕捉那些稍纵即逝的、别人认为"不值得写"的瞬间。'
   },
   critic: {
-    name:'锐利思辨者',
-    icon:'🔍',
-    subtitle:'用理性解剖文本的批评家',
-    traits:['理性','抽象','严肃'],
-    match_dims:{E:-1,R:1,T:0,Iv:0,I:0,Ex:0,Se:1,L:-1,A:1,C:-1},
-    desc:'你用理性的手术刀解剖每一部作品。文学对你而言不仅是感受的对象，更是分析和思考的素材。你喜欢拆解作品的叙事结构、主题层次和象征体系，享受在文本中发现逻辑线索与深层意义的智力快感。你是天生的文学批评家。',
-    strength:'逻辑清晰，分析力强，善于发现作品中的深意与结构之美。',
-    blind:'有时可能过度依赖理性分析，忽略了阅读中直觉和情感的自然流动。',
-    reading:'偶尔放下分析的心态，纯粹地"感受"一本书，像听音乐一样去阅读，让文字直接作用于心灵而非大脑。',
-    books:['《罪与罚》— 陀思妥耶夫斯基','《百年孤独》— 马尔克斯','《文学理论》— 韦勒克','《一九八四》— 奥威尔','《存在与时间》— 海德格尔']
+    name:'锐利思辨者',icon:'🔍',sub:'用思想的刀锋解剖文本的批评家',
+    match_dims:{E:-1,R:1,Se:1,L:-1,A:1,C:-1,T:0,Iv:0,I:0,Ex:0},
+    traits:['理性','抽象','严肃','分析','批判'],
+    portrait:'你的文学灵魂是一间明亮而冷静的解剖室。你阅读不是为了感动，而是为了理解；不是为了逃离，而是为了更清楚地看见。在你手中，每一本书都是一个等待被拆解的精密装置，而你是那个不倦的钟表匠——齿轮、弹簧、游丝，你逐一检视它们如何协同运转。',
+    desc:'你是一个以智性和分析为武器的读者。对你来说，一本书的最高评价从来不是"感人"，而是"有道理"——这三个字的背后，是你对逻辑、深度和原创性的严苛要求。你善于发现作者埋下的伏笔、解构文本的多层含义，享受那种"原来如此"的智识快感。你的阅读不是放松，而是一场高强度的脑力运动——而你在其中乐此不疲。',
+    aura:'初冬清晨的冷光照进一间安静的书房——空气清冽，思维敏锐，一切都以最清晰的轮廓呈现。你的阅读气场让人感到清醒和有力量，却也有一种不苟言笑的紧张感。',
+    strength:'逻辑严密，分析力一流。你能够在复杂的文本中找到结构性的规律，发现其他读者容易忽略的思想脉络。你的批判思维让你不会被华丽辞藻所蒙蔽——你总能直抵作品的核心。',
+    blind:'有时可能过度依赖理性框架，以至于忽略了文学中无法被分析的部分——那些纯粹感性的、直觉的、甚至"无意义"的瞬间。可能会给人"冷"的印象——对温情和轻松的文学形式缺乏足够耐心。',
+    advice:'偶尔放下你的分析工具，让一本书像一首听不懂歌词的外语歌那样流过你——不思考、不判断，只感受。你会发现，有些文学作品的美好恰恰在于它们经不起解剖。试着每个月读一本"没什么道理"的小书，让自己练习纯粹感受的阅读。',
+    authors:[{n:'陀思妥耶夫斯基',r:'人性深井的勘探者'},{n:'乔治·奥威尔',r:'用清晰的语言照亮模糊的世界'},{n:'鲁迅',r:'以笔为刀，解剖国民性'},{n:'加缪',r:'在荒诞中寻找意义的西西弗斯'},{n:'汉娜·阿伦特',r:'思想的力量可以改变世界'}],
+    books:['《罪与罚》— 陀思妥耶夫斯基','《一九八四》— 奥威尔','《呐喊》— 鲁迅','《西西弗神话》— 加缪','《存在与虚无》— 萨特','《极权主义的起源》— 阿伦特','《文学理论入门》— 卡勒','《想象的共同体》— 安德森','《东方学》— 萨义德','《百年孤独》— 马尔克斯'],
+    era:'现实主义、存在主义、后现代批评理论',
+    circle:'文学批评论坛、思想沙龙、学术读书会',
+    writing:'如果你写作，你可能会成为一个"用思想写字的作家"——你的作品不以情动人，而以理服人。你的文字精炼、清晰、有力，像一把精准的手术刀。你可能擅长写评论、杂文或思想随笔，在作品中展现出对复杂问题的穿透力。读者读你的文字不是为了被温柔以待，而是为了被启发和挑战。'
   },
   adventurer: {
-    name:'故事漫游者',
-    icon:'🗺️',
-    subtitle:'追寻精彩故事的探险家',
-    traits:['外倾','具象','感性'],
-    match_dims:{E:1,R:-1,T:0,Iv:0,I:-1,Ex:1,Se:0,L:0,A:-1,C:1},
-    desc:'你是一个天生的故事猎人。文学的魅力对你而言，在于它能把你从现实的座椅上连根拔起，抛入另一个世界。你热爱情节的波澜壮阔，享受与角色并肩冒险的心跳加速。你的书架上充满了"让人停不下来"的小说，阅读对你来说是一场永不结束的旅程。',
-    strength:'充满好奇心，阅读范围广，善于在故事中体验不同的人生。',
-    blind:'有时可能过于追逐情节而走马观花，忽略了文字本身的美感和作品的思想内核。',
-    reading:'试着偶尔放慢阅读节奏，品味作者的语言艺术和叙事技巧，你会发现故事背后还有另一层风景。',
-    books:['《三体》— 刘慈欣','《杀死一只知更鸟》— 哈珀·李','《哈利·波特》— J.K.罗琳','《活着》— 余华','《冰与火之歌》— 乔治·马丁']
+    name:'故事漫游者',icon:'🗺️',sub:'追寻精彩故事的文学探险家',
+    match_dims:{E:1,R:-1,Ex:1,I:-1,C:1,A:-1,T:0,Iv:0,Se:0,L:0},
+    traits:['外倾','具象','感性','好奇','叙事'],
+    portrait:'你的文学灵魂是一艘永远扬帆的船。对你来说，一本书就是一扇通往未知世界的门，而你是一个永远好奇的旅行者。你不在乎目的地是天堂还是地狱，你在乎的是一路上的风景——那场暴雨、那个陌生人、那次意外、那个让你心跳加速的转折。阅读不是你的消遣，而是你的生活方式。',
+    desc:'你是一个以叙事为食粮的读者。文学对你来说首先是"故事"——一个好故事可以让你忘记时间、忘记饥饿、忘记手机里未读的消息。你热爱情节的波澜壮阔，享受与人物的命运同行。你可能是那种会在朋友圈里激情安利"这本真的超好看！"的人，而你的推荐理由往往不是思想多么深刻，而是"根本停不下来"。',
+    aura:'夏夜的篝火边传来的故事——热烈、生动，让人忍不住靠近。你的阅读气场像一阵温暖的风，把你的热情和好奇传染给身边的每一个人。',
+    strength:'阅读涉猎广泛，对不同类型和题材都保持开放态度。共情能力强，能快速与人物的命运产生连结。对好故事有近乎本能的分辨力——你知道什么能抓住人心。',
+    blind:'有时可能过于追逐情节的刺激而忽略了文字的美感和作品的结构。可能会"读得太快"——急于知道后面发生了什么，而错过了许多精巧的细节。对节奏较慢、不以情节见长的作品可能缺乏耐心。',
+    advice:'试着每隔一段时间读一本"没有情节"的书——一本纯描写、纯感受的作品。训练自己放慢阅读速度，不是为了翻到最后一页，而是为了停留在某一页。你会发现，在故事的间隙里，还有另一层风景在等待。',
+    authors:[{n:'金庸',r:'用一支笔构建整个江湖'},{n:'大仲马',r:'人类历史上最会讲故事的人之一'},{n:'JK·罗琳',r:'她让全世界相信魔法'},{n:'余华',r:'用最简单的语言讲最重的人生'},{n:'阿加莎·克里斯蒂',r:'永远让你猜不到下一页'}],
+    books:['《活着》— 余华','《三体》— 刘慈欣','《基督山伯爵》— 大仲马','《哈利·波特》系列','《杀死一只知更鸟》— 哈珀·李','《围城》— 钱钟书','《冰与火之歌》系列','《东方快车谋杀案》— 阿加莎','《射雕英雄传》— 金庸','《了不起的盖茨比》— 菲茨杰拉德'],
+    era:'十九世纪叙事文学、当代通俗小说、魔幻现实主义',
+    circle:'读书打卡群、小说论坛、故事分享会',
+    writing:'如果你写作，你可能会成为一个"不让你睡觉的作家"——你的小说情节紧凑、人物鲜活、悬念迭起，读者一旦开始就很难放下。你天生懂得叙事的节奏感——什么时候加速、什么时候停顿、什么时候给读者一个意想不到的转折。你的作品可能被贴上"好看"的标签，但那并不意味着浅薄，而是对讲故事这门古老手艺的真诚尊重。'
   },
   classic: {
-    name:'古典传承者',
-    icon:'🏛️',
-    subtitle:'守护文学经典的雅士',
-    traits:['传统','严肃','内省'],
-    match_dims:{E:0,R:0,T:1,Iv:-1,I:1,Ex:-1,Se:1,L:-1,A:0,C:0},
-    desc:'你珍视文学的历史与传承。对你而言，经过岁月洗礼的经典作品自有其不可替代的价值。你相信在那些古老的文字中，蕴藏着人类最深邃的智慧和最恒久的美。你喜欢在泛黄的书页间追寻永恒的真理，阅读对你来说是与伟大心灵的跨时空对话。',
-    strength:'品味典雅，对文学传统有深刻的理解和尊重，阅读根基扎实。',
-    blind:'有时可能对新兴的文学形式和实验性写作持保留态度，视野相对保守。',
-    reading:'在守护经典的同时，不妨也给当代的创新作品一些机会，它们可能以新的方式诠释古老的主题。',
-    books:['《红楼梦》— 曹雪芹','《战争与和平》— 托尔斯泰','《论语》','《浮士德》— 歌德','《诗经选》']
+    name:'古典传承者',icon:'🏛️',sub:'守护文学经典殿堂的守望者',
+    match_dims:{T:1,Iv:-1,Se:1,L:-1,I:1,Ex:-1,E:0,R:0,A:0,C:0},
+    traits:['传统','严肃','内省','深厚','典雅'],
+    portrait:'你的文学灵魂是一座古老而庄严的图书馆——拱顶高耸，书架林立，空气中飘浮着旧纸张和皮革的香气。你相信时间是最好的批评家，那些经过百年甚至千年仍然被传诵的作品，自有其不可替代的价值。对你来说，阅读不是追赶新潮，而是与人类文明中最伟大的心灵做一场跨越时空的对话。',
+    desc:'你是一个把"经典"当作家园的读者。在你的阅读世界里，没有什么是真正"过时"的——荷马的英雄、杜甫的家国、莎士比亚的人性、曹雪芹的盛衰——这些才是永恒的坐标。你享受在古籍的字里行间发现智慧，在经典的反复阅读中感受时间的厚度。你不急于追赶新书榜，因为你知道，真正值得读的书早已在那里等待。',
+    aura:'一间深色木质书房里安静燃烧的炉火——沉稳、温暖、有故事。你的阅读气场带给人一种安心的重量感，仿佛在你身边，时间都变得慢了一些。',
+    strength:'阅读根基扎实，对文学史和经典作品有深入的了解。审美品味典雅成熟，不轻易被流行风潮所动摇。拥有超越同龄人的文学见识和判断力，能在作品之间建立深刻的历史关联。',
+    blind:'有时可能对新锐作品和实验性写作持过于保守的态度，视野相对受限。可能会不自觉地对"不够经典"的阅读选择产生偏见。对当代的、通俗的文学形式缺乏足够的关注和理解。',
+    advice:'在守护经典殿堂的同时，也请偶尔推开门窗，让当代的风吹进来一些。今天正在发生的文学尝试——无论看起来多么不成体统——都可能成为明天的经典。试着每季度至少读一本"新鲜出炉"的作品，不是为了否定它们，而是为了理解这个时代的文学正在走向何方。',
+    authors:[{n:'曹雪芹',r:'中国文学的珠穆朗玛'},{n:'托尔斯泰',r:'用史诗的尺度书写人的灵魂'},{n:'杜甫',r:'沉郁顿挫，诗史千秋'},{n:'莎士比亚',r:'他写尽了人的每一种可能'},{n:'歌德',r:'从青年维特到浮士德，一生追问'}],
+    books:['《红楼梦》— 曹雪芹','《战争与和平》— 托尔斯泰','《杜甫诗选》','《哈姆雷特》— 莎士比亚','《浮士德》— 歌德','《诗经选》','《堂吉诃德》— 塞万提斯','《史记选》— 司马迁','《论语》','《傲慢与偏见》— 简·奥斯汀'],
+    era:'古典时代、文艺复兴、中国唐宋文学',
+    circle:'古典文学研究会、诗词社、传统文化沙龙',
+    writing:'如果你写作，你可能会成为一个"有根有脉的作家"——你的文字背后站着千年的文学传统，每一句话都能听到古典的回响。你尊重文学的章法和规矩，在传统的基础上寻求创新。你的作品可能不会是最"时髦"的，但可能是最能经得起时间的——因为你的根扎得足够深。'
   },
   avant: {
-    name:'先锋探索者',
-    icon:'🎨',
-    subtitle:'打破边界的文学实验家',
-    traits:['创新','抽象','理性'],
-    match_dims:{E:0,R:1,T:-1,Iv:1,I:0,Ex:0,Se:0,L:0,A:1,C:-1},
-    desc:'你是一个文学上的探险家，永远站在创新的最前沿。对你来说，规则是用来打破的，边界是用来跨越的。你热爱实验性的写作、反传统的叙事和非线性的表达。那些让人"读不太懂但大受震撼"的作品，正是你的精神食粮。你相信文学的未来在于不断突破。',
-    strength:'思想开放，对新鲜事物充满热情，善于发现非主流作品的独特价值。',
-    blind:'有时可能过于追求新奇而忽略了作品的情感温度和可读性。',
-    reading:'在拥抱先锋的同时，偶尔回溯传统也会带来惊喜——许多"先锋"其实是对古老形式的重新发现。',
-    books:['《尤利西斯》— 乔伊斯','《万有引力之虹》— 品钦','《灵山》— 高行健','《博尔赫斯全集》','《达洛维夫人》— 伍尔夫']
+    name:'先锋探索者',icon:'🎨',sub:'打破边界的文学炼金术士',
+    match_dims:{Iv:1,T:-1,A:1,C:-1,R:1,E:-1,I:0,Ex:0,Se:0,L:0},
+    traits:['创新','抽象','理性','实验','独立'],
+    portrait:'你的文学灵魂是一间布满了破碎镜子的工作室——每一片碎片都折射出世界的一个怪诞角度。你讨厌"正常"的叙事，厌倦"理所当然"的表达。对你来说，文学不是舒适的扶手椅，而是一把撬开认知天花板的铁棍。你在别人看到混乱的地方看到了新的秩序，在别人摇头叹气的时候，你已经看见了下一个可能性。',
+    desc:'你是一个文学上的"不安分子"——永远在边界上试探，永远在寻找下一个未被定义的领域。你阅读不是为了充实自己，而是为了打碎自己然后重新组装。你热爱那些让人"看不懂但大受震撼"的作品，享受在意义的废墟上寻找新的语法。你的书架上可能没有"正常"的书——而是一堆像外星生物一样的文字造物，每一本都在挑战你对"书"的定义。',
+    aura:'一间午夜的地下实验室——瓶瓶罐罐冒着奇怪的烟雾，墙上画着没人看得懂的公式。你的阅读气场是神秘而充满爆发力的，让人感到危险但也令人兴奋。',
+    strength:'思想极度开放，想象力自由奔放。拥有发现"非常规价值"的独特眼光——那些被主流忽略的、边缘的、古怪的作品，在你眼中可能是宝库。永远保持好奇心，从不满足于已有的答案。',
+    blind:'有时可能过于追求形式和技巧的创新，而忽略了文学最朴素的情感力量。可能会陷入"为创新而创新"的陷阱——忘记了形式最终是为内容服务的。阅读选择可能过于集中于小众和先锋作品。',
+    advice:'在探索语言边疆的同时，偶尔也回到文学最原始的功能——讲故事、表达情感、记录生活。你会发现，有时候最"传统"的写法也能爆发出最震撼的力量。形式可以创新，但不必成为形式的奴隶。',
+    authors:[{n:'博尔赫斯',r:'在无限的图书馆里创造宇宙'},{n:'卡夫卡',r:'用最平静的语调写最荒诞的噩梦'},{n:'乔伊斯',r:'他把语言本身变成了角色'},{n:'卡尔维诺',r:'轻盈而精确的文学魔术师'},{n:'残雪',r:'中国卡夫卡，在深渊里舞蹈'}],
+    books:['《小径分岔的花园》— 博尔赫斯','《变形记》— 卡夫卡','《尤利西斯》— 乔伊斯','《如果在冬夜，一个旅人》— 卡尔维诺','《看不见的城市》— 卡尔维诺','《灵山》— 高行健','《城堡》— 卡夫卡','《万有引力之虹》— 品钦','《达洛维夫人》— 伍尔夫','《世界尽头与冷酷仙境》— 村上春树'],
+    era:'现代主义、后现代主义、先锋派、超现实主义',
+    circle:'独立文学杂志、先锋艺术社区、创意写作工坊',
+    writing:'如果你写作，你可能会成为一个"让评论家争论不休的作家"——你的作品不能用任何已有的标签来定义，因为你自己正在创造新的标签。你可能发明新的叙事结构、混合不同的文体、甚至创造新的词汇。你的读者可能分为两极——要么完全看不懂，要么觉得你是天才。你不在乎前者，因为你本来就不是为所有人写作的。'
   },
   observer: {
-    name:'人间观察者',
-    icon:'👁️',
-    subtitle:'透过文学理解社会与人性',
-    traits:['理性','外倾','严肃'],
-    match_dims:{E:-1,R:1,T:0,Iv:0,I:0,Ex:1,Se:1,L:-1,A:0,C:0},
-    desc:'你通过文学来理解人和社会。对你来说，最好的作品是那些能揭示人性真相、映照社会现实的文字。你偏爱现实主义的笔触，关注作品中的人物命运和社会肌理。阅读对你来说是一面镜子，让你更清晰地看到这个复杂世界的运转方式。',
-    strength:'洞察力强，善于将文学与现实联系起来，对社会和人性有深刻理解。',
-    blind:'有时可能过于关注作品的社会意义，忽略了文学作为艺术的独立审美价值。',
-    reading:'偶尔给自己放个假，读一些纯粹为了美和愉悦的作品，让阅读不只是"理解"也是"感受"。',
-    books:['《呐喊》— 鲁迅','《鼠疫》— 加缪','《看不见的城市》— 卡尔维诺','《围城》— 钱钟书','《了不起的盖茨比》— 菲茨杰拉德']
+    name:'人间观察者',icon:'👁️',sub:'透过文学理解社会与人性的洞察者',
+    match_dims:{R:1,E:-1,Ex:1,I:-1,Se:1,L:-1,T:0,Iv:0,A:0,C:0},
+    traits:['理性','外倾','严肃','洞察','现实'],
+    portrait:'你的文学灵魂是一扇对着大街的窗——你安静地坐在窗边，看着世间万象来来往往。文学的笔在你手中是一把手术刀，也是一面镜子；你用故事来解剖社会，用人物的命运来追问时代的症候。对你来说，最好的作品不是那些让你"感动"的，而是那些让你"明白"的——明白人性为何如此，世界为何如此。',
+    desc:'你是一个用文学来阅读现实的读者。你关注的从来不是孤立的文本——你关注的是文本背后那个庞大而复杂的世界。你喜欢现实主义的笔触，欣赏那些敢于直面社会问题的作家。你的阅读是介入性的——你通过文学来理解权力的运作、阶级的固化、人性的暗面。对你而言，逃避不是文学的功能，照亮才是。',
+    aura:'黄昏时分坐在街角咖啡馆里的观察者——清醒、睿智，有一点点疏离，但眼睛从来不曾离开人群。你的阅读气场让人感到可靠和深邃。',
+    strength:'洞察力出众，对人性、社会和历史有深入的理解。善于在作品中看到个人命运背后的结构性力量。现实感强，不会轻易被虚假的情感所蒙蔽。对社会议题保持关注，阅读具有鲜明的价值立场。',
+    blind:'有时可能过于关注文学的社会功能，而忽略了文学作为纯粹艺术的独立价值。可能会无意识地以"政治正确"或"社会意义"作为评价文学的唯一标准。对轻快的、娱乐性的、纯粹的美的作品可能有居高临下的态度。',
+    advice:'试着每季度读一本"没有社会意义"的书——一本纯粹为了美、为了好玩、为了让人开心的作品。文学除了是手术刀和镜子，也可以是一首无伤大雅的流行歌曲、一碗深夜的热汤面。偶尔摆脱"意义"的负担，让阅读回归最本真的乐趣。',
+    authors:[{n:'狄更斯',r:'用笔为底层人民点亮一盏灯'},{n:'巴尔扎克',r:'人间喜剧，一个时代的社会全景图'},{n:'鲁迅',r:'横眉冷对千夫指'},{n:'契诃夫',r:'在朴素中看见整个俄罗斯'},{n:'奥尔罕·帕慕克',r:'在东西方的夹缝中书写身份'}],
+    books:['《呐喊》《彷徨》— 鲁迅','《悲惨世界》— 雨果','《人间喜剧》— 巴尔扎克','《骆驼祥子》— 老舍','《了不起的盖茨比》— 菲茨杰拉德','《鼠疫》— 加缪','《檀香刑》— 莫言','《杀死一只知更鸟》— 哈珀·李','《1984》— 奥威尔','《我的名字叫红》— 帕慕克'],
+    era:'批判现实主义、自然主义、后殖民文学',
+    circle:'社会议题读书会、非虚构写作社群、公共知识分子论坛',
+    writing:'如果你写作，你可能会成为一个"为时代立传的作家"——你的文字不是风花雪月，而是对这个时代忠实的记录和深切的批判。你关注普通人的命运，关心社会的公平正义。你的作品可能不会让读者轻飘飘地快乐，但会让读者沉甸甸地思考——这就是你给这个世界最好的礼物。'
   },
   healer: {
-    name:'温暖治愈者',
-    icon:'🌿',
-    subtitle:'在文字中寻找温暖与慰藉',
-    traits:['感性','具象','轻松'],
-    match_dims:{E:1,R:-1,T:0,Iv:0,I:0,Ex:0,Se:-1,L:1,A:-1,C:1},
-    desc:'你在文学中寻找温暖和力量。对你来说，最好的文字是那些能让人感到被理解和被拥抱的。你喜欢温暖人心的故事、治愈系的散文和充满生活气息的文字。阅读对你来说是一种温柔的自我关怀，在书页间你找到了安放疲惫心灵的港湾。',
-    strength:'善于发现生活中的美好，能从文字中获得治愈力量，并将这种温暖传递给他人。',
-    blind:'有时可能回避沉重和严肃的题材，但那些作品同样蕴含着深刻的治愈力。',
-    reading:'偶尔尝试一些"苦后回甘"的作品，那些经历了黑暗之后的微光，往往最能给人力量。',
-    books:['《解忧杂货店》— 东野圭吾','《小森林》— 五十岚大介','《人间草木》— 汪曾祺','《海鸥食堂》— 群阳子','《岛上书店》— 泽文']
+    name:'温暖治愈者',icon:'🌿',sub:'在文字中寻找光与温度的灵魂',
+    match_dims:{E:1,R:-1,C:1,A:-1,L:1,Se:-1,T:0,Iv:0,I:0,Ex:0},
+    traits:['感性','具象','轻松','温暖','自然'],
+    portrait:'你的文学灵魂是一间永远亮着暖黄灯光的厨房——锅里炖着汤，窗台上有一盆薄荷，桌边摆着一本折了角的书。文学对你来说不是高高在上的艺术，而是日常生活中的温柔伴侣。你不需要"读懂"什么，你只需要被文字轻轻地拥抱一下——就像冬天喝到第一口热可可，就像下雨天发现包里正好有伞。',
+    desc:'你是一个用心灵来"取暖"的读者。对你来说，一本好书的终极标准不是它的深度或技巧，而是它能不能让你感到"被理解"和"被治愈"。你偏爱那些温暖人心的故事、治愈系的散文和充满生活情趣的文字。你的阅读不是攀登高峰，而是沿着一条小溪散步——轻松、舒适、充满偶然发现的小惊喜。你相信文字有抚慰灵魂的力量——而你就是这个信念最好的证明。',
+    aura:'春日午后的阳光透过厨房的窗子——暖暖地洒在木桌上，照着一杯刚泡好的茶。你的阅读气场让人放松、感到安全，像被一个温柔的朋友轻轻地拍了拍肩膀。',
+    strength:'善于发现生活和文字中的美好细节，拥有一颗知足而感恩的心。共情能力强，能将阅读中获得的温暖转化为对他人的善意。阅读是你自我疗愈的方式——你知道如何用书中的智慧来安慰自己和他人。',
+    blind:'有时可能会回避沉重和痛苦的题材——那些同样蕴含着力量和美的黑暗作品。阅读选择可能过度集中在"正能量"作品中，而错过了一些苦后回甘的深刻体验。可能会过度依赖阅读作为情感慰藉的工具，而不是主动面对现实中的问题。',
+    advice:'偶尔读一本"苦"的书——不是自虐，而是相信：有些光明需要穿过最深的黑暗才能看见。那些经历了绝望之后的希望、承受了破碎之后的完整，往往比单纯的温暖更加动人。你的治愈力不会因为直面黑暗而减弱——反而会变得更加深厚和可靠。',
+    authors:[{n:'汪曾祺',r:'人间烟火，最抚凡人心'},{n:'村上春树',r:'孤独被他说出来就不那么孤独了'},{n:'吉本芭娜娜',r:'在厨房里找到生命的慰藉'},{n:'东野圭吾',r:'悬疑外壳里的温暖内核'},{n:'安东尼·德·圣埃克苏佩里',r:'所有大人都曾经是孩子'}],
+    books:['《人间草木》— 汪曾祺','《解忧杂货店》— 东野圭吾','《小王子》— 圣埃克苏佩里','《厨房》— 吉本芭娜娜','《岛上书店》— 泽文','《挪威的森林》— 村上春树','《一个人生活》— 谷川俊太郎','《明天也是小春日和》— 津端修一','《步履不停》— 是枝裕和','《绿山墙的安妮》— 蒙哥马利'],
+    era:'当代治愈文学、日本私小说、生活美学散文',
+    circle:'治愈系读书会、生活美学社群、手工与阅读结合的工作坊',
+    writing:'如果你写作，你可能会成为一个"让人想要拥抱的作家"——你的文字简单但温暖，平实但有光。你不会追求华丽的辞藻和复杂的结构，你只是诚实地写下生活中那些微小而确定的幸福。你的读者会在深夜翻开你的书，然后觉得世界没有那么可怕了——这就是你最大的才华。'
   },
   philosopher: {
-    name:'哲意追寻者',
-    icon:'🌙',
-    subtitle:'在文字中探索生命的意义',
-    traits:['内省','抽象','传统'],
-    match_dims:{E:0,R:0,T:1,Iv:0,I:1,Ex:-1,Se:0,L:0,A:1,C:-1},
-    desc:'你在文字中探索生命的终极问题。文学对你来说是哲学的诗意表达，是思考存在的另一种方式。你喜欢那些探讨时间、命运、自由、孤独等永恒主题的作品，在阅读中不断地追问"为什么"。你的书架是一张思想的星图，每一本书都是一颗发问的星辰。',
-    strength:'思想深邃，善于在作品中发掘哲学内涵，拥有强大的内省能力。',
-    blind:'有时可能过于沉迷于抽象思辨，而忽略了文学中的烟火气和生命力。',
-    reading:'偶尔读一些"轻"的作品，让思想在生活的细枝末节中休憩，也是一种哲学式的平衡。',
-    books:['《局外人》— 加缪','《不能承受的生命之轻》— 昆德拉','《庄子》','《悉达多》— 黑塞','《沉思录》— 马可·奥勒留']
+    name:'哲意追寻者',icon:'🌙',sub:'在文字中追问存在意义的思考者',
+    match_dims:{I:1,Ex:-1,A:1,C:-1,T:1,Iv:-1,E:0,R:0,Se:0,L:0},
+    traits:['内省','抽象','传统','深邃','思辨'],
+    portrait:'你的文学灵魂是一颗深夜独自运转的星球——缓慢、深沉，带着一种古老而优雅的孤独。你读书不是为了娱乐，而是为了追问那些没有答案的问题：我们为什么在这里？时间的尽头有什么？自由是真实的还是幻觉？你的每一次阅读都是一次精神上的朝圣——不是为了抵达，而是为了走得更深。',
+    desc:'你是一个在文学中寻找哲学的读者。对你来说，最好的文学作品是那些让你停下来——不是停下来感动，而是停下来思考——思考存在、命运、死亡、爱、时间这些最根本的问题。你喜欢那些像迷宫一样的文本，享受在反复阅读中一层层剥开意义的快感。你的书架是一张思想的星图——陀思妥耶夫斯基挨着加缪，庄子靠着海德格尔。你不急不徐地读，因为你知道，真正重要的问题不需要匆忙的回答。',
+    aura:'深夜书房里一盏孤灯——周围很暗，但那盏灯照得很远。你的阅读气场是沉静而深邃的，让人不由自主地放慢呼吸，开始想一些平时不会想的问题。',
+    strength:'思想深度出众，拥有罕见的内省能力。善于在文学作品中发掘哲学内涵，看到表面叙事之下的形而上层面。阅读不是为了获取信息，而是为了锻造灵魂——你的每一次深读都在重塑自己。',
+    blind:'有时可能过度沉溺于抽象思辨，而忽略了文学中的烟火气、生命力和身体性。可能会轻视"浅"的作品，忘记了浅显本身也是一种智慧。阅读体验可能过于孤独和内化——缺少与人交流和碰撞的机会。',
+    advice:'偶尔从哲学的高空降落到生活的平地。去读一本关于美食、关于旅行、关于一只猫的日常的书——不是为了"思考"，只是为了"存在"。你会发现，有些最深刻的哲学问题，答案就藏在最朴素的生活细节中。另外，试着加入一个读书讨论小组——让你的思想在与他人的碰撞中获得新的维度。',
+    authors:[{n:'博尔赫斯',r:'在镜子和迷宫之间追问真实'},{n:'加缪',r:'在荒诞中倔强地寻找意义'},{n:'庄子',r:'逍遥游于天地之间，与万物为一'},{n:'黑塞',r:'每个人的生命都是一条通向自我的路'},{n:'米兰·昆德拉',r:'在轻与重之间思考存在的全部'}],
+    books:['《局外人》— 加缪','《悉达多》— 黑塞','《庄子》','《不能承受的生命之轻》— 昆德拉','《小径分岔的花园》— 博尔赫斯','《存在与时间》— 海德格尔','《荒原狼》— 黑塞','《沉思录》— 马可·奥勒留','《查拉图斯特拉如是说》— 尼采','《地下室手记》— 陀思妥耶夫斯基'],
+    era:'存在主义、道家哲学、德国浪漫主义、荒诞派',
+    circle:'哲学读书会、思想沙龙、深度讨论小组',
+    writing:'如果你写作，你可能会成为一个"用故事提问的作家"——你的作品读起来像小说，但内核是哲学。你不会直接给出答案，而是通过人物和情节来呈现人类的根本困境。你的读者在读完最后一页后，可能会久久地坐着——不是在想故事，而是在想自己。这就是你作品的魅力：它不终结于最后一页，而是开始于读者合上书的那一刻。'
   }
 };
 
 // ==================== STATE ====================
-let currentQuestion = 0;
-let answers = new Array(30).fill(null); // stores selected option index (0-3)
-let scores = {E:0,R:0,T:0,Iv:0,I:0,Ex:0,Se:0,L:0,A:0,C:0};
+let idx=0, ans=new Array(100).fill(null), sc={E:0,R:0,T:0,Iv:0,I:0,Ex:0,Se:0,L:0,A:0,C:0};
 
 // ==================== QUIZ LOGIC ====================
-function startQuiz() {
-  currentQuestion = 0;
-  answers = new Array(30).fill(null);
-  scores = {E:0,R:0,T:0,Iv:0,I:0,Ex:0,Se:0,L:0,A:0,C:0};
-  switchScreen('screen-quiz');
-  renderQuestion();
-}
+function startQuiz(){idx=0;ans=new Array(100).fill(null);sc={E:0,R:0,T:0,Iv:0,I:0,Ex:0,Se:0,L:0,A:0,C:0};switchScreen('quiz');renderQ();}
+function switchScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 
-function switchScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-function renderQuestion() {
-  const q = QUESTIONS[currentQuestion];
-  document.getElementById('quiz-progress').textContent = `第 ${currentQuestion+1} / 30 题`;
-  document.getElementById('quiz-group').textContent = q.group;
-  document.getElementById('progress-fill').style.width = ((currentQuestion)/30*100) + '%';
-  document.getElementById('question-group-label').textContent = '📌 ' + q.group;
-  document.getElementById('question-text').textContent = q.text;
-
-  const optsContainer = document.getElementById('options-list');
-  optsContainer.innerHTML = '';
-  q.options.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    if (answers[currentQuestion] === idx) btn.classList.add('selected');
-    btn.innerHTML = `<span class="option-letter">${opt.letter}</span><span>${opt.text}</span>`;
-    btn.addEventListener('click', () => selectOption(idx));
-    optsContainer.appendChild(btn);
+function renderQ(){
+  const q=Q[idx];
+  document.getElementById('qnum').textContent=`第 ${idx+1} / 100 题`;
+  document.getElementById('qgroup').textContent=q.g;
+  document.getElementById('pfill').style.width=((idx)/100*100)+'%';
+  document.getElementById('qglabel').textContent='📌 '+q.g;
+  document.getElementById('qtext').textContent=q.t;
+  const opts=document.getElementById('opts');opts.innerHTML='';
+  q.o.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='opt';
+    if(ans[idx]===i)b.classList.add('selected');
+    b.innerHTML=`<span class="opt-letter">${o.l}</span><span>${o.x}</span>`;
+    b.addEventListener('click',()=>selectOpt(i));opts.appendChild(b);
   });
-
-  document.getElementById('btn-prev').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
-  const btnNext = document.getElementById('btn-next');
-  btnNext.disabled = answers[currentQuestion] === null;
-  btnNext.textContent = currentQuestion === 29 ? '查看结果 ✦' : '下一题 →';
+  document.getElementById('prev').style.visibility=idx===0?'hidden':'visible';
+  const nb=document.getElementById('next');nb.disabled=ans[idx]===null;
+  nb.textContent=idx===99?'查看报告 ✦':'下一题 →';
 }
 
-function selectOption(idx) {
-  // Remove old score
-  if (answers[currentQuestion] !== null) {
-    const oldTags = QUESTIONS[currentQuestion].options[answers[currentQuestion]].tags;
-    oldTags.forEach(t => scores[t]--);
-  }
-  // Add new score
-  answers[currentQuestion] = idx;
-  QUESTIONS[currentQuestion].options[idx].tags.forEach(t => scores[t]++);
-
-  // Update UI
-  document.querySelectorAll('.option-btn').forEach((b,i) => b.classList.toggle('selected', i===idx));
-  document.getElementById('btn-next').disabled = false;
+function selectOpt(i){
+  if(ans[idx]!==null){Q[idx].o[ans[idx]].s.forEach(t=>sc[t]--);}
+  ans[idx]=i;Q[idx].o[i].s.forEach(t=>sc[t]++);
+  document.querySelectorAll('.opt').forEach((b,j)=>b.classList.toggle('selected',j===i));
+  document.getElementById('next').disabled=false;
 }
 
-function nextQuestion() {
-  if (answers[currentQuestion] === null) return;
-  if (currentQuestion < 29) {
-    currentQuestion++;
-    renderQuestion();
-    window.scrollTo({top:0, behavior:'smooth'});
-  } else {
-    showResults();
-  }
-}
-
-function prevQuestion() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    renderQuestion();
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-}
+function nextQ(){if(ans[idx]===null)return;if(idx<99){idx++;renderQ();window.scrollTo({top:0,behavior:'smooth'});}else{showResults();}}
+function prevQ(){if(idx>0){idx--;renderQ();window.scrollTo({top:0,behavior:'smooth'});}}
 
 // ==================== RESULTS ====================
-function showResults() {
-  switchScreen('screen-results');
-
-  // Calculate dimension values as ratios
-  const dims = {
-    emotional: scores.E / Math.max(1, scores.E + scores.R),       // 0(rational) ~ 1(emotional)
-    innovative: scores.Iv / Math.max(1, scores.T + scores.Iv),    // 0(traditional) ~ 1(innovative)
-    extroverted: scores.Ex / Math.max(1, scores.I + scores.Ex),   // 0(introspective) ~ 1(extroverted)
-    light: scores.L / Math.max(1, scores.Se + scores.L),          // 0(serious) ~ 1(light)
-    concrete: scores.C / Math.max(1, scores.A + scores.C),        // 0(abstract) ~ 1(concrete)
+function showResults(){
+  switchScreen('results');
+  const dims={
+    emotional:sc.E/Math.max(1,sc.E+sc.R),
+    innovative:sc.Iv/Math.max(1,sc.T+sc.Iv),
+    extroverted:sc.Ex/Math.max(1,sc.I+sc.Ex),
+    light:sc.L/Math.max(1,sc.Se+sc.L),
+    concrete:sc.C/Math.max(1,sc.A+sc.C)
   };
-
-  // Map dimension ratios to -1 ~ +1 for matching
-  const dimVec = {
-    E: dims.emotional * 2 - 1,    // -1(rational) ~ +1(emotional)
-    R: -(dims.emotional * 2 - 1),
-    Iv: dims.innovative * 2 - 1,  // -1(traditional) ~ +1(innovative)
-    T: -(dims.innovative * 2 - 1),
-    Ex: dims.extroverted * 2 - 1, // -1(introspective) ~ +1(extroverted)
-    I: -(dims.extroverted * 2 - 1),
-    L: dims.light * 2 - 1,        // -1(serious) ~ +1(light)
-    Se: -(dims.light * 2 - 1),
-    C: dims.concrete * 2 - 1,     // -1(abstract) ~ +1(concrete)
-    A: -(dims.concrete * 2 - 1),
-  };
-
-  // Find best matching personality
-  let bestType = null, bestScore = -Infinity;
-  for (const [key, p] of Object.entries(PERSONALITIES)) {
-    let score = 0, count = 0;
-    for (const [dim, w] of Object.entries(p.match_dims)) {
-      if (w !== 0) {
-        score += dimVec[dim] * w;
-        count++;
-      }
-    }
-    score = score / count; // normalize
-    if (score > bestScore) { bestScore = score; bestType = key; }
+  const dv={E:dims.emotional*2-1,R:-(dims.emotional*2-1),Iv:dims.innovative*2-1,T:-(dims.innovative*2-1),Ex:dims.extroverted*2-1,I:-(dims.extroverted*2-1),L:dims.light*2-1,Se:-(dims.light*2-1),C:dims.concrete*2-1,A:-(dims.concrete*2-1)};
+  let best=null,bs=-Infinity;
+  for(const[k,p]of Object.entries(P)){
+    let s=0,n=0;
+    for(const[d,w]of Object.entries(p.match_dims||{})){if(w!==0){s+=dv[d]*w;n++;}}
+    s=s/n;if(s>bs){bs=s;best=k;}
   }
-
-  const p = PERSONALITIES[bestType];
-  const matchPercent = Math.round(Math.min(98, 55 + bestScore * 40));
-
-  // Render results
-  document.getElementById('result-icon').textContent = p.icon;
-  document.getElementById('result-name').textContent = p.name;
-  document.getElementById('result-subtitle').textContent = p.subtitle;
-
-  // Match bar animation
-  setTimeout(() => {
-    document.getElementById('match-percent').textContent = matchPercent + '%';
-    document.getElementById('match-bar').style.width = matchPercent + '%';
-  }, 400);
-
-  // Radar chart
+  const p=P[best],mp=Math.round(Math.min(98,55+bs*40));
+  document.getElementById('ricon').textContent=p.icon;
+  document.getElementById('rname').textContent=p.name;
+  document.getElementById('rsub').textContent=p.sub;
+  setTimeout(()=>{document.getElementById('mpct').textContent=mp+'%';document.getElementById('mbar').style.width=mp+'%';},400);
   drawRadar(dims);
-
-  // Analysis content
-  const analysisHTML = `
+  const h=`
     <div class="analysis-block">
-      <h3>🎭 人格特质</h3>
-      <div class="tag-row">${p.traits.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="section-title"><span class="emoji">🖋️</span> 文学灵魂画像</div>
+      <div class="portrait-box">${p.portrait}</div>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">📖</span> 人格描述</div>
       <p>${p.desc}</p>
     </div>
     <div class="analysis-block">
-      <h3>✨ 阅读优势</h3>
+      <div class="section-title"><span class="emoji">🌤️</span> 阅读气场</div>
+      <p>${p.aura}</p>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">🎭</span> 核心特质</div>
+      <div class="tag-row">${p.traits.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">✨</span> 阅读优势</div>
       <p>${p.strength}</p>
     </div>
     <div class="analysis-block">
-      <h3>🔍 阅读盲区</h3>
+      <div class="section-title"><span class="emoji">🔍</span> 阅读盲区</div>
       <p>${p.blind}</p>
     </div>
     <div class="analysis-block">
-      <h3>💡 阅读建议</h3>
-      <p>${p.reading}</p>
+      <div class="section-title"><span class="emoji">💡</span> 阅读建议</div>
+      <p>${p.advice}</p>
     </div>
     <div class="analysis-block">
-      <h3>📚 推荐书单</h3>
-      <div class="book-list">${p.books.map(b=>`<span class="book-item">${b}</span>`).join('')}</div>
+      <div class="section-title"><span class="emoji">✒️</span> 作家知音</div>
+      <div class="author-list">${p.authors.map(a=>`<div class="author-item"><span style="font-size:20px;">${['📚','📖','📜','📕','📙'][p.authors.indexOf(a)]}</span><div><strong>${a.n}</strong><br><span style="font-size:12px;color:var(--ink-light);">${a.r}</span></div></div>`).join('')}</div>
     </div>
-  `;
-  document.getElementById('analysis-content').innerHTML = analysisHTML;
-
-  // Store for sharing
-  window._resultData = { type: bestType, match: matchPercent, dims };
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">📚</span> 推荐书单</div>
+      <div class="book-list">${p.books.map(b=>`<span class="book">${b}</span>`).join('')}</div>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">⏳</span> 文学时期共鸣</div>
+      <p>${p.era}</p>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">👥</span> 适合的文学圈子</div>
+      <p>${p.circle}</p>
+    </div>
+    <div class="analysis-block">
+      <div class="section-title"><span class="emoji">✍️</span> 如果你开始写作……</div>
+      <p>${p.writing}</p>
+    </div>`;
+  document.getElementById('analysis').innerHTML=h;
+  window._rd={type:best,match:mp,dims};
 }
 
-function drawRadar(dims) {
-  const svg = document.getElementById('radar-chart');
-  const labels = ['感性', '创新', '外倾', '轻松', '具象'];
-  const values = [dims.emotional, dims.innovative, dims.extroverted, dims.light, dims.concrete];
-  const N = 5;
-  const R = 100;
-  const cx = 0, cy = 0;
-
-  let html = '';
-
-  // Grid lines and labels
-  for (let level = 1; level <= 4; level++) {
-    const r = (level / 4) * R;
-    html += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#d4c8b0" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>`;
-  }
-
-  // Axis lines
-  for (let i = 0; i < N; i++) {
-    const angle = -Math.PI/2 + (2*Math.PI/N)*i;
-    const x = R * Math.cos(angle);
-    const y = R * Math.sin(angle);
-    html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d4c8b0" stroke-width="1" opacity="0.6"/>`;
-  }
-
-  // Data polygon
-  const points = [];
-  for (let i = 0; i < N; i++) {
-    const angle = -Math.PI/2 + (2*Math.PI/N)*i;
-    const r = values[i] * R;
-    points.push(`${(cx + r*Math.cos(angle)).toFixed(1)},${(cy + r*Math.sin(angle)).toFixed(1)}`);
-  }
-  html += `<polygon points="${points.join(' ')}" fill="rgba(199,91,57,0.25)" stroke="#c75b39" stroke-width="2" stroke-linejoin="round"/>`;
-
-  // Data points
-  for (let i = 0; i < N; i++) {
-    const angle = -Math.PI/2 + (2*Math.PI/N)*i;
-    const r = values[i] * R;
-    const x = cx + r*Math.cos(angle);
-    const y = cy + r*Math.sin(angle);
-    html += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#c75b39" stroke="#fff" stroke-width="1.5"/>`;
-  }
-
-  // Labels
-  const labelPairs = [['感性','理性'],['创新','传统'],['外倾','内省'],['轻松','严肃'],['具象','抽象']];
-  for (let i = 0; i < N; i++) {
-    const angle = -Math.PI/2 + (2*Math.PI/N)*i;
-    const lr = R + 22;
-    const lx = cx + lr*Math.cos(angle);
-    const ly = cy + lr*Math.sin(angle);
-    const anchor = Math.abs(lx) < 10 ? 'middle' : (lx > 0 ? 'start' : 'end');
-    html += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" font-size="11" fill="#3d3226" font-family="ZCOOL XiaoWei,serif">${labelPairs[i][0]}<tspan font-size="9" fill="#9a8b7a" x="${lx.toFixed(1)}" dy="14">${labelPairs[i][1]}</tspan></text>`;
-  }
-
-  svg.innerHTML = html;
+function drawRadar(dims){
+  const svg=document.getElementById('radar');
+  const labels=[['感性','理性'],['创新','传统'],['外倾','内省'],['轻松','严肃'],['具象','抽象']];
+  const vals=[dims.emotional,dims.innovative,dims.extroverted,dims.light,dims.concrete];
+  const N=5,R=100;let h='';
+  for(let l=1;l<=4;l++){const r=l/4*R;h+=`<circle cx="0" cy="0" r="${r}" fill="none" stroke="#d4c8b0" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>`;}
+  for(let i=0;i<N;i++){const a=-Math.PI/2+2*Math.PI/N*i;h+=`<line x1="0" y1="0" x2="${(R*Math.cos(a)).toFixed(1)}" y2="${(R*Math.sin(a)).toFixed(1)}" stroke="#d4c8b0" stroke-width="1" opacity="0.6"/>`;}
+  const pts=[];for(let i=0;i<N;i++){const a=-Math.PI/2+2*Math.PI/N*i,r=vals[i]*R;pts.push(`${(r*Math.cos(a)).toFixed(1)},${(r*Math.sin(a)).toFixed(1)}`);}
+  h+=`<polygon points="${pts.join(' ')}" fill="rgba(184,68,42,0.2)" stroke="#b8442a" stroke-width="2" stroke-linejoin="round"/>`;
+  for(let i=0;i<N;i++){const a=-Math.PI/2+2*Math.PI/N*i,r=vals[i]*R;h+=`<circle cx="${(r*Math.cos(a)).toFixed(1)}" cy="${(r*Math.sin(a)).toFixed(1)}" r="4" fill="#b8442a" stroke="#fff" stroke-width="1.5"/>`;}
+  for(let i=0;i<N;i++){const a=-Math.PI/2+2*Math.PI/N*i,lr=R+22;h+=`<text x="${(lr*Math.cos(a)).toFixed(1)}" y="${(lr*Math.sin(a)).toFixed(1)}" text-anchor="${Math.abs(lr*Math.cos(a))<10?'middle':(lr*Math.cos(a)>0?'start':'end')}" dominant-baseline="middle" font-size="11" fill="#2c2416" font-family="Noto Serif SC,ZCOOL XiaoWei,serif">${labels[i][0]}<tspan font-size="8" fill="#8a7b65" x="${(lr*Math.cos(a)).toFixed(1)}" dy="13">${labels[i][1]}</tspan></text>`;}
+  svg.innerHTML=h;
 }
 
-function restartQuiz() {
-  startQuiz();
-}
-
-function shareResult() {
-  if (!window._resultData) return;
-  const p = PERSONALITIES[window._resultData.type];
-  const text = `📖 我的文学人格是：${p.name}（${p.subtitle}）\n匹配度：${window._resultData.match}%\n\n来测测你的文学人格吧！`;
-
-  if (navigator.share) {
-    navigator.share({ title: '文学人格测试', text: text, url: window.location.href })
-      .catch(() => copyText(text));
-  } else {
-    copyText(text);
-  }
-}
-
-function copyText(text) {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => alert('结果已复制！粘贴分享给朋友吧 ✨'));
-  } else {
-    prompt('复制这段文字分享给朋友：', text);
-  }
+function restartQuiz(){startQuiz();}
+function shareResult(){
+  if(!window._rd)return;
+  const p=P[window._rd.type];
+  const t=`📜 我的文学人格：${p.name}（${p.sub}）\n匹配度：${window._rd.match}%\n\n来测测你的文学人格 →`;
+  if(navigator.share){navigator.share({title:'文学人格测试',text:t,url:window.location.href}).catch(()=>{});}
+  else{navigator.clipboard.writeText(t).then(()=>alert('结果已复制！✨'));}
 }
 </script>
 </body>
